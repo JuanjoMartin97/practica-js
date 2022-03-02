@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+.carousel-inner {
+  width: 40rem;
+  height: 30rem;
+  margin-bottom: 6rem;
+  border-radius: 1px;
+  -moz-box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
+  -webkit-box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
+  box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75); }
+  .carousel-inner .carousel-item img {
+    width: 100%;
+    height: 600px; }
+
+#topBtn {
+  display: none;
+  position: fixed;
+  /* posicion boton */
+  bottom: 40px;
+  /* se posiciona boton en bottom = 40px */
+  right: 30px;
+  /* se posiciona 30px a la derecha */
+  z-index: 99;
+  border: none;
+  /* quita los bordes */
+  outline: none;
+  /* quita lineas exteriores*/
+  background-color: #0a0b47;
+  /* define color de fondo */
+  color: white;
+  /* color de texto */
+  cursor: pointer;
+  /* pointer del mouse */
+  padding: 15px;
+  /* padding */
+  border-radius: 10px;
+  /* bordes redondeados */
+  font-size: 18px;
+  /* incrementa tam letra */ }
+  #topBtn:hover {
+    background-color: #555;
+    /* agrega fondo gris al hover */ }
+
+.searchBar {
+  display: flex;
+  justify-content: center; }
+  .searchBar .typeSearch {
+    background-image: url("/img/magnify.png");
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 70%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 3rem;
+    -moz-box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
+    -webkit-box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
+    box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75); }
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  margin-bottom: 3rem; }
+  .buttons .btn {
+    background-color: #552035;
+    color: #f7f7f7;
+    border-radius: 1.5rem;
+    margin: 10px;
+    border: none;
+    outline: none;
+    text-align: center;
+    padding: 0.5rem;
+    width: 100%;
+    transition: 0.3s;
+    cursor: pointer; }
+    .buttons .btn:hover {
+      background-color: #ddd; }
+
+.boxes {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: row;
+  flex-wrap: wrap; }
+  .boxes .box {
+    flex: 10%;
+    color: white;
+    text-align: center;
+    background-color: rgba(230, 214, 214, 0.185);
+    margin: 10px;
+    display: none;
+    /* Hidden by default */
+    box-shadow: 0 8px 8px 0 rgba(2, 2, 2, 0.9);
+    transition: 0.3s;
+    /* On mouse-over, add a deeper shadow */ }
+    .boxes .box img {
+      margin-top: 10px;
+      width: 300px;
+      height: 225px; }
+    .boxes .box:hover {
+      box-shadow: 0 1px 20px 0 rgba(233, 4, 4, 0.9); }
+    .boxes .box label {
+      color: #f1ebf1;
+      margin-bottom: 20px;
+      font-weight: 700; }
+    .boxes .box p {
+      text-decoration-line: underline; }
+      .boxes .box p a {
+        font-weight: 700;
+        text-decoration: none;
+        color: white; }
+  .boxes .addElement {
+    background-color: rgba(230, 214, 214, 0.185);
+    text-align: center; }
+    .boxes .addElement h3 {
+      color: red; }
+    .boxes .addElement img {
+      width: 300px;
+      height: 200px; }
+  .boxes .show {
+    display: block; }
+
+.contents {
+  justify-content: center;
+  justify-items: center; }
+  .contents .boxes {
+    background-color: rgba(230, 214, 214, 0.185);
+    margin: 10px; }
+    .contents .boxes img {
+      margin-top: 10px;
+      width: 500px;
+      height: 400px;
+      margin-bottom: 10px; }
+
+body {
+  background-image: url(../img/background-img.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%; }
+
+.numPages {
+  display: flex;
+  justify-content: center; }
+  .numPages p {
+    font-size: 25px;
+    padding: 2rem; }
+    .numPages p .disabled {
+      text-decoration: none;
+      color: red;
+      pointer-events: none;
+      cursor: default;
+      opacity: 0.6; }
+
+h2 {
+  text-align: center;
+  color: red; }

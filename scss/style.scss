@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@import "./components/carousel";
+@import "./components/cards";
+@import "./components/footer";
+@import "./components/header";
+@import "./components/seachbar";
+@import "./components/buttons";
+@import "./components/boxes";
+
+body {
+  background-image: url(../img/background-img.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+
+.numPages {
+  display: flex;
+  justify-content: center;
+  p {
+    font-size: 25px;
+    padding: 2rem;
+    .disabled {
+      text-decoration: none;
+      color: red;
+      pointer-events: none;
+      cursor: default;
+      opacity: 0.6;
+    }
+  }
+}
+
+h2{
+  text-align: center;
+  color:  red;
+}
+
+

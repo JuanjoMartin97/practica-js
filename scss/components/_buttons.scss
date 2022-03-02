@@ -1,0 +1,22 @@
+.buttons {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  margin-bottom: 3rem;
+  .btn {
+    background-color: rgb(85, 32, 53);
+    color: rgb(247, 247, 247);
+    border-radius: 1.5rem;
+    margin: 10px;
+    border: none;
+    outline: none;
+    text-align: center;
+    padding: 0.5rem;
+    width: 100%;
+    transition: 0.3s;
+    cursor: pointer;
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+}

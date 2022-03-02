@@ -1,0 +1,20 @@
+#topBtn {
+    display: none;
+    position: fixed; /* posicion boton */
+    bottom: 40px; /* se posiciona boton en bottom = 40px */
+    right: 30px; /* se posiciona 30px a la derecha */
+    z-index: 99; 
+    border: none; /* quita los bordes */
+    outline: none; /* quita lineas exteriores*/
+    background-color: rgb(10, 11, 71); /* define color de fondo */
+    color: white; /* color de texto */
+    cursor: pointer; /* pointer del mouse */
+    padding: 15px; /* padding */
+    border-radius: 10px; /* bordes redondeados */
+    font-size: 18px; /* incrementa tam letra */
+    &:hover {
+        background-color: #555; /* agrega fondo gris al hover */
+      }
+  }
+  
+  
