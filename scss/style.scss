@@ -4,19 +4,65 @@
   box-sizing: border-box;
 }
 @import "./components/carousel";
-@import "./components/cards";
 @import "./components/footer";
-@import "./components/header";
-@import "./components/seachbar";
-@import "./components/buttons";
-@import "./components/boxes";
 
 body {
+  width: 100%;
   background-image: url(../img/background-img.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  .arrays {
+    backdrop-filter: blur(4px);
+    width: 100%;
+    margin: auto;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "splash splash1"
+      "controls controls ";
+    #splash {
+      margin-top: 3rem;
+      grid-area: splash;
+      
+      img {
+        width: 600px;
+        height: 500px;
+      }
+    
+    }
+    #splash1 {
+      margin-top: 3rem;
+      grid-area: splash1;
+      img {
+        width: 600px;
+        height: 500px;
+      }
+    }
+    #controls {
+      margin-top: 5rem;
+      grid-area: controls;
+      .buttons {
+        background-color: rgb(85, 32, 53);
+        color: rgb(247, 247, 247);
+        border-radius: 1.5rem;
+        margin: 10px;
+        border: none;
+        outline: none;
+        text-align: center;
+        padding: 0.5rem;
+        width: 100%;
+        transition: 0.3s;
+        cursor: pointer;
+        &:hover {
+          background-color: #ddd;
+        }
+      }
+    }
+  }
 }
-
 
 .numPages {
   display: flex;
@@ -34,9 +80,7 @@ body {
   }
 }
 
-h2{
+h2 {
   text-align: center;
-  color:  red;
+  color: red;
 }
-
-

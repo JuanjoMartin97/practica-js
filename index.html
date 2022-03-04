@@ -11,7 +11,6 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-
     <title>Universo 3D</title>
   </head>
 
@@ -152,47 +151,25 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-      <!--MENU IZQUIERDA Y BUSCARDOR-->
-      <section class="searchBar">
-        <input
-          class="typeSearch"
-          type="text"
-          id="searchInput"
-          placeholder="Búsqueda PrintEverything"
-        />
-      </section>
-      <!-- FILTRO POR BOTONES -->
-      <!-- <div class="buttons">
-        <button class="btn" onclick="filterSelection('all')">
-          Ver Todos
-        </button>
-        <button class="btn" onclick="filterSelection('anime')">Anime</button>
-        <button class="btn" onclick="filterSelection('funko')">
-          Funko Pop
-        </button>
-        <button class="btn" onclick="filterSelection('videoGames')">
-          Video Juegos
-        </button>
-        <button class="btn" onclick="filterSelection('marvel')">Marvel</button>
-      </div>
-      <div class="contents" id="content"> 
-        <h2>MÁS DESCARGADOS</h2>      
-          <div class="boxes" id="box">       
-          </div>  
-        <div class="buttons">
-          <button class="btn" onclick="changeImage()">Siguiente</button>
+      <h2>MAS DESCARGADOS!</h2>
+      <div class="arrays">
+        <div id="splash" >
+          <h3 id="title1" style="color: white;"></h3>
+          <p id="description1" style="color:white" ></p>
+          <img id="mainImage"/>
         </div>
-      </div> -->
-
-      <div id="splash">
-        <h3 id="name"></h3>
-        <img src="img/dbz-trunks/Trunks.jpeg" id="mainImage" />
-      </div>
-      <div id="controls">
-        <button id="previousbtn" onclick="previousImage()">
-          Previous Image
-        </button>
-        <button id="nextbtn" onclick="nextImage()" >Next Image</button>
+        <div id="controls">
+          <button class="buttons" id="previousbtn" onclick="previousImage2();previousImage();">
+            Anterior
+          </button>
+          <button class="buttons" id="nextbtn" onclick="nextImage2(); nextImage();" >Siguiente </button>
+        </div>
+        <div id="splash1">
+          <h3 id="title" style="color: white;"></h3>
+          <p id="description" style="color:white" ></p>
+          <img id="mainImage2"/>    
+        </div>
+       
       </div>
       <section class="numPages">
         <p><a class="disabled" href="index.html">1</a></p>
@@ -207,7 +184,7 @@
     <script src="js/_utilities.js"></script>
     <script src="js/_search.js"></script>
     <script src="js/_array.js"></script>
-
+    <script src="js/_class.js" ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
       integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
