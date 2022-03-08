@@ -56,6 +56,7 @@ function Archivos(nombre, description, link, categoria) {
   this.src = link;
   this.categoria = categoria;
 }
+
 // creamos los elementos del html y treamos los elementos del array//
 for (let i in archivos3d) {
   let contenedor = document.createElement("div");
@@ -73,6 +74,20 @@ for (let i in archivos3d) {
                             <br>`;
   document.getElementById("contenedor").appendChild(contenedor);
 }
+
+//----------- FILTRADO DE LOS ITEMS DEL ARRAY -------------//
+
+function filtroCategoria() {
+  const categoryUser = document.getElementById("buscador").value;
+  let catFiltrada = archivos3d.filter(archivo => {
+    return archivo.categoria.includes(categoryUser);
+  });
+  if (categoryUser = archivos3d.description){
+    
+  }
+  console.log(catFiltrada)
+}
+
 
 //ARRAY DE LOS MAS DESCARGADOS//
 
