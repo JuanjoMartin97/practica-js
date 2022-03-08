@@ -1,8 +1,12 @@
+//arrays con los archivos utilizados para las cards//
 const tagsArchivos = ["Figura", "Juegos", "Soporte", "Marvel", "Mascara"];
 const archivos3d = [];
 
 archivos3d.push(
-  new Archivos("Wukong", "Figura Wukong", "/img/wukong.jpg", ["Figura", "Marvel"])
+  new Archivos("Wukong", "Figura Wukong", "/img/wukong.jpg", [
+    "Figura",
+    "Marvel",
+  ])
 );
 archivos3d.push(
   new Archivos("Mask", "Mascara Oni", "/img/mask/mask2.png", ["Mascara"])
@@ -24,12 +28,10 @@ archivos3d.push(
   )
 );
 archivos3d.push(
-  new Archivos(
-    "Ultron",
-    "Ultron Figura Marvel",
-    "/img/ultron/ultron2.jpg",
-    ["Figura", "Marvel"]
-  )
+  new Archivos("Ultron", "Ultron Figura Marvel", "/img/ultron/ultron2.jpg", [
+    "Figura",
+    "Marvel",
+  ])
 );
 archivos3d.push(
   new Archivos(
@@ -48,30 +50,28 @@ archivos3d.push(
   )
 );
 
-
 function Archivos(nombre, description, link, categoria) {
   this.nombre = nombre;
   this.description = description;
   this.src = link;
   this.categoria = categoria;
 }
-
+// creamos los elementos del html y treamos los elementos del array//
 for (let i in archivos3d) {
   let contenedor = document.createElement("div");
-  contenedor.innerHTML = `<div class="card">
+  contenedor.innerHTML = `<div class="card" >
                             <p> Nombre del archivo: ${archivos3d[i].nombre}</p>
                            <br>
-                            <img src=${archivos3d[i].src} class = "img"/>
+                            <img style=" width: 400px ; height:300px" src=${archivos3d[i].src} class = "img"/>
                           <br> 
                           <p> Categorias: ${archivos3d[i].categoria}</p>            
                             <b>  ${archivos3d[i].description}<b/>
                            <br>
                             <button> Agregar a descargas! </button>
                            <button> Quitar! </button>
-
                             </div> 
                             <br>`;
-  document.body.appendChild(contenedor);
+  document.getElementById("contenedor").appendChild(contenedor);
 }
 
 //ARRAY DE LOS MAS DESCARGADOS//

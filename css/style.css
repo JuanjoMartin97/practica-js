@@ -49,8 +49,21 @@ body {
   background-image: url(../img/background-img.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%; }
+  body .contenedor {
+    width: 100%;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 0 auto; }
+    body .contenedor .card {
+      align-items: center;
+      text-align: center;
+      background-color: black;
+      color: white;
+      border-radius: 30px;
+      border: 2px solid red; }
   body .arrays {
-    backdrop-filter: blur(4px);
     width: 100%;
     margin: auto;
     display: grid;
@@ -63,14 +76,14 @@ body {
       margin-top: 3rem;
       grid-area: splash; }
       body .arrays #splash img {
-        width: 600px;
-        height: 500px; }
+        width: 400px;
+        height: 300px; }
     body .arrays #splash1 {
       margin-top: 3rem;
       grid-area: splash1; }
       body .arrays #splash1 img {
-        width: 600px;
-        height: 500px; }
+        width: 400px;
+        height: 300px; }
     body .arrays #controls {
       margin-top: 5rem;
       grid-area: controls; }

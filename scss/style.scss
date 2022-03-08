@@ -11,8 +11,24 @@ body {
   background-image: url(../img/background-img.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  .contenedor {
+    width: 100%;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 0 auto;
+    .card {
+      align-items: center;
+      text-align: center;
+      background-color: black;
+      color: white;
+      border-radius: 30px;
+      border: 2px solid red;
+    }
+  }
   .arrays {
-    backdrop-filter: blur(4px);
+    // backdrop-filter: blur(4px);
     width: 100%;
     margin: auto;
     display: grid;
@@ -26,19 +42,18 @@ body {
     #splash {
       margin-top: 3rem;
       grid-area: splash;
-      
+
       img {
-        width: 600px;
-        height: 500px;
+        width: 400px;
+        height: 300px;
       }
-    
     }
     #splash1 {
       margin-top: 3rem;
       grid-area: splash1;
       img {
-        width: 600px;
-        height: 500px;
+        width: 400px;
+        height: 300px;
       }
     }
     #controls {
