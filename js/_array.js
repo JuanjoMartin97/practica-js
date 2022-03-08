@@ -1,3 +1,81 @@
+const tagsArchivos = ["Figura", "Juegos", "Soporte", "Marvel", "Mascara"];
+const archivos3d = [];
+
+archivos3d.push(
+  new Archivos("Wukong", "Figura Wukong", "/img/wukong.jpg", ["Figura", "Marvel"])
+);
+archivos3d.push(
+  new Archivos("Mask", "Mascara Oni", "/img/mask/mask2.png", ["Mascara"])
+);
+archivos3d.push(
+  new Archivos(
+    "Soporte Link",
+    "Soporte Joystick Link Leyend of Zelda",
+    "/img/stl/soporte-control-link.png",
+    ["Soporte"]
+  )
+);
+archivos3d.push(
+  new Archivos(
+    "Venom Marvel",
+    "Busto Venom Marvel",
+    "/img/venom-body/venom-body.jpg",
+    ["Figura", "Marvel"]
+  )
+);
+archivos3d.push(
+  new Archivos(
+    "Ultron",
+    "Ultron Figura Marvel",
+    "/img/ultron/ultron2.jpg",
+    ["Figura", "Marvel"]
+  )
+);
+archivos3d.push(
+  new Archivos(
+    "Soporte Joystick ps4",
+    "Soporte Joystick The Last Of Us Part ||",
+    "/img/stl/soporte-joy-tlou.jpg",
+    ["Soporte"]
+  )
+);
+archivos3d.push(
+  new Archivos(
+    "Bahamut Final Fantasy",
+    "Figura Bahamut Final Fantasy Ender3pro",
+    "/img/stl/bahamut-final-fantasy.png",
+    ["Figura", "Juegos"]
+  )
+);
+
+
+function Archivos(nombre, description, link, categoria) {
+  this.nombre = nombre;
+  this.description = description;
+  this.src = link;
+  this.categoria = categoria;
+}
+
+for (let i in archivos3d) {
+  let contenedor = document.createElement("div");
+  contenedor.innerHTML = `<div class="card">
+                            <p> Nombre del archivo: ${archivos3d[i].nombre}</p>
+                           <br>
+                            <img src=${archivos3d[i].src} class = "img"/>
+                          <br> 
+                          <p> Categorias: ${archivos3d[i].categoria}</p>            
+                            <b>  ${archivos3d[i].description}<b/>
+                           <br>
+                            <button> Agregar a descargas! </button>
+                           <button> Quitar! </button>
+
+                            </div> 
+                            <br>`;
+  document.body.appendChild(contenedor);
+}
+
+//ARRAY DE LOS MAS DESCARGADOS//
+
 let imgArray = [];
 
 imgArray[0] = new Image();
@@ -122,6 +200,7 @@ function previousImage() {
     }
   }
 }
+
 // ------------- FIN FUNCION RECORRER PRIMER VECTOR IMG ---------
 
 // ------------- FUNCION RECORRER SEGUNDO VECTOR IMG ---------
