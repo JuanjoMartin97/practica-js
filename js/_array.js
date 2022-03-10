@@ -78,16 +78,54 @@ for (let i in archivos3d) {
 //----------- FILTRADO DE LOS ITEMS DEL ARRAY -------------//
 
 function filtroCategoria() {
+  let contenedorSinCat = document.getElementById("noCategoria")
   const categoryUser = document.getElementById("buscador").value;
-  let catFiltrada = archivos3d.filter(archivo => {
-    return archivo.categoria.includes(categoryUser);
+  let catFiltrada = archivos3d.filter((archivo) => {
+    return archivo.categoria.join(" ").toLowerCase().includes(categoryUser.toLowerCase());
   });
-  if (categoryUser = archivos3d.description){
-    
-  }
-  console.log(catFiltrada)
-}
+  let child = contenedorSinCat.lastElementChild; 
+        while (child) {
+            contenedorSinCat.removeChild(child);
+            child = contenedorSinCat.lastElementChild;
+        }
+  if( categoryUser.trim().length && catFiltrada.length === 0 ){
+    let noCategoria = document.createElement("div")
+    noCategoria.innerHTML = ` <div class="sinCategoria">
+                              <p> No hay existen elementos </p>
+                              </div>`;
+   document.getElementById("noCategoria").appendChild(noCategoria); 
+  document.getElementById("contenedor").style.visibility="hidden";                     
+  } else{  
+    if(catFiltrada.length > 0){
+      let contenedorImagenes = document.getElementById("contenedor");
+      let imagenChild = contenedorImagenes.lastElementChild; 
+        while (imagenChild) {
+            contenedorImagenes.removeChild(imagenChild);
+            imagenChild = contenedorImagenes.lastElementChild;
+        }
+        for (let i in catFiltrada) {
+          let contenedor = document.createElement("div");
+          contenedor.innerHTML = `<div class="card" >
+                                    <p> Nombre del archivo: ${catFiltrada[i].nombre}</p>
+                                   <br>
+                                    <img style=" width: 400px ; height:300px" src=${catFiltrada[i].src} class = "img"/>
+                                  <br> 
+                                  <p> Categorias: ${catFiltrada[i].categoria}</p>            
+                                    <b>  ${catFiltrada[i].description}<b/>
+                                   <br>
+                                    <button> Agregar a descargas! </button>
+                                   <button> Quitar! </button>
+                                    </div> 
+                                    <br>`;
+          contenedorImagenes.appendChild(contenedor);
+        }
+      contenedorImagenes.style.visibility = "visible"; 
+    }else{
 
+    }
+  }
+  console.log(catFiltrada);
+}
 
 //ARRAY DE LOS MAS DESCARGADOS//
 
