@@ -1,11 +1,18 @@
 //arrays con los archivos utilizados para las cards//
-const tagsArchivos = ["Figura", "Juegos", "Soporte", "Marvel", "Mascara"];
+const tagsArchivos = [
+  "Figura",
+  "Juegos",
+  "Soporte",
+  "Marvel",
+  "Mascara",
+  "Joystick",
+];
 const archivos3d = [];
 
 archivos3d.push(
   new Archivos("Wukong", "Figura Wukong", "/img/wukong.jpg", [
     "Figura",
-    "Marvel",
+    " Marvel",
   ])
 );
 archivos3d.push(
@@ -16,7 +23,7 @@ archivos3d.push(
     "Soporte Link",
     "Soporte Joystick Link Leyend of Zelda",
     "/img/stl/soporte-control-link.png",
-    ["Soporte"]
+    ["Soporte", " Joystick"]
   )
 );
 archivos3d.push(
@@ -24,13 +31,13 @@ archivos3d.push(
     "Venom Marvel",
     "Busto Venom Marvel",
     "/img/venom-body/venom-body.jpg",
-    ["Figura", "Marvel"]
+    ["Figura", " Marvel"]
   )
 );
 archivos3d.push(
   new Archivos("Ultron", "Ultron Figura Marvel", "/img/ultron/ultron2.jpg", [
     "Figura",
-    "Marvel",
+    " Marvel",
   ])
 );
 archivos3d.push(
@@ -38,7 +45,7 @@ archivos3d.push(
     "Soporte Joystick ps4",
     "Soporte Joystick The Last Of Us Part ||",
     "/img/stl/soporte-joy-tlou.jpg",
-    ["Soporte"]
+    ["Soporte", " Joystick"]
   )
 );
 archivos3d.push(
@@ -46,7 +53,7 @@ archivos3d.push(
     "Bahamut Final Fantasy",
     "Figura Bahamut Final Fantasy Ender3pro",
     "/img/stl/bahamut-final-fantasy.png",
-    ["Figura", "Juegos"]
+    ["Figura", " Juegos"]
   )
 );
 
@@ -68,7 +75,7 @@ for (let i in archivos3d) {
                           <p> Categorias: ${archivos3d[i].categoria}</p>            
                             <b>  ${archivos3d[i].description}<b/>
                            <br>
-                            <button> Agregar a descargas! </button>
+                           <input type="checkbox" id="accept"> Agregar a descargas             
                            <button> Quitar! </button>
                             </div> 
                             <br>`;
@@ -78,178 +85,238 @@ for (let i in archivos3d) {
 //----------- FILTRADO DE LOS ITEMS DEL ARRAY -------------//
 
 function filtroCategoria() {
-  let contenedorSinCat = document.getElementById("noCategoria")
+  let contenedorSinCat = document.getElementById("noCategoria");
   const categoryUser = document.getElementById("buscador").value;
   let catFiltrada = archivos3d.filter((archivo) => {
-    return archivo.categoria.join(" ").toLowerCase().includes(categoryUser.toLowerCase());
+    return archivo.categoria
+      .join(" ")
+      .toLowerCase()
+      .includes(categoryUser.toLowerCase());
   });
-  let child = contenedorSinCat.lastElementChild; 
-        while (child) {
-            contenedorSinCat.removeChild(child);
-            child = contenedorSinCat.lastElementChild;
-        }
-  if( categoryUser.trim().length && catFiltrada.length === 0 ){
-    let noCategoria = document.createElement("div")
+  let child = contenedorSinCat.lastElementChild;
+  while (child) {
+    contenedorSinCat.removeChild(child);
+    child = contenedorSinCat.lastElementChild;
+  }
+  // ------------ CUANDO NO HAY ELEMENTOS QUE MOSTRAR ---------------//
+  if (categoryUser.trim().length && catFiltrada.length === 0) {
+    let noCategoria = document.createElement("div");
     noCategoria.innerHTML = ` <div class="sinCategoria">
                               <p> No hay existen elementos </p>
                               </div>`;
-   document.getElementById("noCategoria").appendChild(noCategoria); 
-  document.getElementById("contenedor").style.visibility="hidden";                     
-  } else{  
-    if(catFiltrada.length > 0){
+    document.getElementById("noCategoria").appendChild(noCategoria);
+    //--- OCULTA LOS ELEMENTOS DEL ARRAY QUE NO COINCIDE CON LA BUSQUEDA ----//
+    document.getElementById("contenedor").style.visibility = "hidden";
+  } else {
+    if (catFiltrada.length > 0) {
       let contenedorImagenes = document.getElementById("contenedor");
-      let imagenChild = contenedorImagenes.lastElementChild; 
-        while (imagenChild) {
-            contenedorImagenes.removeChild(imagenChild);
-            imagenChild = contenedorImagenes.lastElementChild;
-        }
-        for (let i in catFiltrada) {
-          let contenedor = document.createElement("div");
-          contenedor.innerHTML = `<div class="card" >
+      // -------------ELIMINA TODOS LOS COMPONENTES HIJOS ----------------- //
+
+      let imagenChild = contenedorImagenes.lastElementChild;
+      while (imagenChild) {
+        contenedorImagenes.removeChild(imagenChild);
+        imagenChild = contenedorImagenes.lastElementChild;
+      }
+      for (let i in catFiltrada) {
+        let contenedor = document.createElement("div");
+        contenedor.innerHTML = `<div class="card" >
                                     <p> Nombre del archivo: ${catFiltrada[i].nombre}</p>
                                    <br>
                                     <img style=" width: 400px ; height:300px" src=${catFiltrada[i].src} class = "img"/>
                                   <br> 
                                   <p> Categorias: ${catFiltrada[i].categoria}</p>            
-                                    <b>  ${catFiltrada[i].description}<b/>
+                                    <b>  ${catFiltrada[i].description}</b>
                                    <br>
-                                    <button> Agregar a descargas! </button>
+                                   <input type="checkbox" id="accept"> Agregar a descargas
                                    <button> Quitar! </button>
-                                    </div> 
-                                    <br>`;
-          contenedorImagenes.appendChild(contenedor);
-        }
-      contenedorImagenes.style.visibility = "visible"; 
-    }else{
-
+                                   </div> 
+                                   <br>`;
+        contenedorImagenes.appendChild(contenedor);
+      }
+      // VA MOSTRANDO LOS ELEMENTOS DE ACUERDO AL INPUT //
+      document.getElementById("contenedor").style.visibility = "visible";
+    } else {
     }
   }
   console.log(catFiltrada);
 }
 
 //ARRAY DE LOS MAS DESCARGADOS//
+const imgArrayDescargados = [];
 
-let imgArray = [];
+imgArrayDescargados.push(
+  new ImgArray("Trunks", "Trunks del Futuro", "/img/dbz-trunks/Trunks.jpeg")
+);
+imgArrayDescargados.push(
+  new ImgArray(
+    "Luffy Gear 4",
+    "Figura Luffy One Piece",
+    "/img/stl/LuffyGear4.jpg"
+  )
+);
+imgArrayDescargados.push(
+  new ImgArray(
+    "Goku vs Broly",
+    "Figura de la pelea Goku Broly pelicula",
+    "/img/stl/broly-vs-goku-3d-model-stl.jpg"
+  )
+);
+imgArrayDescargados.push(
+  new ImgArray(
+    "Ronoroa Zoro",
+    "Figura Zoro One Piece",
+    "/img/stl/zoro-busto.jpg"
+  )
+);
+imgArrayDescargados.push(
+  new ImgArray("Naruto Fuko", "Funko Naruto ender3", "/img/stl/narutofunko.png")
+);
+imgArrayDescargados.push(
+  new ImgArray(
+    "Nezuko Figura",
+    "Figura Nezuko Demon Slayer",
+    "/img/stl/nezukoStl.jpg"
+  )
+);
+imgArrayDescargados.push(
+  new ImgArray(
+    "Rengoku Demon Slayer",
+    "Figura Rengoku Demon Slayer",
+    "/img/stl/rengoku-demon.jpg"
+  )
+);
+imgArrayDescargados.push(
+  new ImgArray(
+    "Goku SSJ DBZ",
+    "Figura Goku DBZ - Kakarot SSJ",
+    "/img/stl/GokuSS.jpeg"
+  )
+);
+imgArrayDescargados.push(
+  new ImgArray(
+    "Vegeta Funko",
+    "Vegeta DBZ Funko Replica ender3",
+    "/img/stl/vegeta.jpg"
+  )
+);
 
-imgArray[0] = new Image();
-imgArray[0].nombre = "Trunks";
-imgArray[0].description = "Trunks del futuro";
-imgArray[0].src = "img/dbz-trunks/Trunks.jpeg";
-imgArray[1] = new Image();
-imgArray[1].nombre = "Luffy Gear 4 Figura";
-imgArray[1].description = "Figura Luffy One Piece";
-imgArray[1].src = "img/stl/LuffyGear4.jpg";
-imgArray[2] = new Image();
-imgArray[2].nombre = "Goku vs Broly Figura";
-imgArray[2].description = "Figura de la pelea Goku Broly, pelicula";
-imgArray[2].src = "img/stl/broly-vs-goku-3d-model-stl.jpg";
-imgArray[3] = new Image();
-imgArray[3].nombre = "Zoro Figura";
-imgArray[3].description = "Figura Zoro One Piece ";
-imgArray[3].src = "img/stl/zoro-busto.jpg";
-imgArray[4] = new Image();
-imgArray[4].nombre = "Naruto Fuko";
-imgArray[4].description = "Funko Naruto ender3";
-imgArray[4].src = "img/stl/narutofunko.png";
-imgArray[5] = new Image();
-imgArray[5].nombre = "Nezuko Figura";
-imgArray[5].description = "Figura Nezuko Demon Slayer";
-imgArray[5].src = "img/stl/nezukoStl.jpg";
-imgArray[6] = new Image();
-imgArray[6].nombre = "Rengoku Demon Slayer";
-imgArray[6].description = "Figura Rengoku Demon Slayer";
-imgArray[6].src = "img/stl/Rengoku-Demon.jpg";
-imgArray[7] = new Image();
-imgArray[7].nombre = "Goku SSJ DBZ";
-imgArray[7].description = "Figura Goku DBZ - Kakarot SSJ";
-imgArray[7].src = "img/stl/GokuSS.jpeg";
-imgArray[8] = new Image();
-imgArray[8].nombre = "Vegeta Funko";
-imgArray[8].description = "Vegeta DBZ Funko Replica ender3";
-imgArray[8].src = "img/stl/vegeta.jpg";
+console.log(imgArrayDescargados);
+
+function ImgArray(nombre, description, link) {
+  this.nombre = nombre;
+  this.description = description;
+  this.src = link;
+}
 
 let imgArray2 = [];
 
-imgArray2[0] = new Image();
-imgArray2[0].nombre = "Black Widow - The Avengers";
-imgArray2[0].description = "BlackWidow The Avengers figura";
-imgArray2[0].src = "img/stl/blackwidow.jpg";
-imgArray2[1] = new Image();
-imgArray2[1].nombre = "Capitan America - The Avengers";
-imgArray2[1].description = "Figura Capitan America The Avergers";
-imgArray2[1].src = "img/stl/CaptainAmericaBust.jpg";
-imgArray2[2] = new Image();
-imgArray2[2].nombre = "Arbol Bonsai";
-imgArray2[2].description = "Arbol Bonsai Deco";
-imgArray2[2].src = "img/stl/Bonsai-Tree-and-Pot.jpg";
-imgArray2[3] = new Image();
-imgArray2[3].nombre = "Soporte Pokemon Joystick";
-imgArray2[3].description = "Soporte Joystick Voltorb Pokemon 1Gen";
-imgArray2[3].src = "img/stl/soporte-control-ps4-Pokemon.jpg";
-imgArray2[4] = new Image();
-imgArray2[4].nombre = "Soporte Joystick Halo";
-imgArray2[4].description = "Soporte Joystick Master Chief Halo";
-imgArray2[4].src = "img/stl/soporte-halo.jpg";
-imgArray2[5] = new Image();
-imgArray2[5].nombre = "Ray GhostBusters";
-imgArray2[5].description = "Personaje Ray GhostBusters Figura";
-imgArray2[5].src = "img/stl/ghostbusters-ray.jpg";
-imgArray2[6] = new Image();
-imgArray2[6].nombre = "Spengler GhostBusters";
-imgArray2[6].description = "Personaje Spengler GhostBusters Figura";
-imgArray2[6].src = "img/stl/ghostbusters-spengler.jpg";
-imgArray2[7] = new Image();
-imgArray2[7].nombre = "Venkman GhostBusters ";
-imgArray2[7].description = "Personaje Venkman GhostBusters Figura";
-imgArray2[7].src = "img/stl/ghostbusters-venkman.jpg";
-imgArray2[8] = new Image();
-imgArray2[8].nombre = "Zeddemore GhostBusters";
-imgArray2[8].description = "Personajes Zeddemore GhostBusters Figura";
-imgArray2[8].src = "img/stl/ghostbusters-zeddemore.jpg";
-imgArray2[9] = new Image();
-imgArray2[9].nombre = "Jason Figura";
-imgArray2[9].description = "Figura personaje Jason Friday13";
-imgArray2[9].src = "img/stl/jason-bust.png";
+imgArray2.push(
+  new archivosArray2(
+    "Black Widow - The Avengers",
+    "BlackWidow The Avengers figura",
+    "img/stl/blackwidow.jpg"
+  )
+);
+imgArray2.push(
+  new archivosArray2(
+    "Capitan America - The Avengers",
+    "Figura Capitan America The Avergers",
+    "img/stl/CaptainAmericaBust.jpg"
+  )
+);
+imgArray2.push(
+  new archivosArray2(
+    "Arbol Bonsai",
+    "Arbol Bonsai Deco",
+    "img/stl/Bonsai-Tree-and-Pot.jpg"
+  )
+);
+imgArray2.push(
+  new archivosArray2(
+    "Soporte Voltorb Pokemon Joystick",
+    "Soporte Joystick Voltorb Pokemon 1Gen",
+    "img/stl/soporte-control-ps4-Pokemon.jpg"
+  )
+);
+imgArray2.push(
+  new archivosArray2(
+    "Soporte Joystick Halo",
+    "Soporte Joystick Master Chief Halo XBOX",
+    "img/stl/soporte-halo.jpg"
+  )
+);
+imgArray2.push(
+  new archivosArray2(
+    "Ray GhostBusters",
+    "Personaje Ray GhostBusters Figura",
+    "img/stl/ghostbusters-ray.jpg"
+  )
+);
+imgArray2.push(
+  new archivosArray2(
+    "Spengler GhostBusters",
+    "Personaje Spengler GhostBusters Figura",
+    "img/stl/ghostbusters-spengler.jpg"
+  )
+);
+imgArray2.push(
+  new archivosArray2(
+    "Venkman GhostBusters",
+    "Personaje Venkman GhostBusters Figura",
+    "img/stl/ghostbusters-venkman.jpg"
+  )
+);
+imgArray2.push(
+  new archivosArray2(
+    "Zeddmore GhostBusters",
+    "Personajes Zeddemore GhostBusters Figura",
+    "/img/stl/vegeta.jpg"
+  )
+);
 
-document.getElementById("title1").innerHTML = imgArray[0].nombre;
-document.getElementById("description1").innerHTML = imgArray[0].description;
-document.getElementById("mainImage").src = imgArray[0].src;
+function archivosArray2(nombre, description, src) {
+  this.nombre = nombre;
+  this.description = description;
+  this.src = src;
+}
+
+// COMIENZO PRIMER VECTOR //
+
+document.getElementById("title1").innerHTML = imgArrayDescargados[0].nombre;
+document.getElementById("description1").innerHTML =
+  imgArrayDescargados[0].description;
+document.getElementById("mainImage").src = imgArrayDescargados[0].src;
+
 // ------------- FUNCION RECORRER PRIMER VECTOR IMG ---------
 function nextImage() {
-  let img = document.getElementById("mainImage");
-  for (let i = 0; i < imgArray.length; i++) {
-    if (imgArray[i].src == img.src) {
-      if (i === imgArray.length) {
-        document.getElementById("mainImage").src = imgArray[0].src;
-        document.getElementById("title1").innerHTML = imgArray[0].nombre;
-        document.getElementById("description1").innerHTML =
-          imgArray[0].description;
-        break;
+  let name = document.getElementById("title1");
+  for (let i = 0; i < imgArrayDescargados.length; i++) {
+    if (imgArrayDescargados[i].nombre == name.innerHTML) {
+      if (i === imgArrayDescargados.length - 1) {
+        return;
       }
-      document.getElementById("mainImage").src = imgArray[i + 1].src;
-      document.getElementById("title1").innerHTML = imgArray[i + 1].nombre;
+      document.getElementById("title1").innerHTML =
+        imgArrayDescargados[i + 1].nombre;
       document.getElementById("description1").innerHTML =
-        imgArray[i + 1].description;
-      break;
+        imgArrayDescargados[i + 1].description;
+      document.getElementById("mainImage").src = imgArrayDescargados[i + 1].src;
+      return;
     }
   }
 }
 function previousImage() {
-  let img = document.getElementById("mainImage");
-  for (let i = imgArray.length - 1; i >= 0; i--) {
-    if (imgArray[i].src == img.src) {
-      if (i === imgArray.length) {
-        document.getElementById("mainImage").src = imgArray[8].src;
-        document.getElementById("title1").innerHTML = imgArray[8].nombre;
-        document.getElementById("description1").innerHTML =
-          imgArray[8].description;
-        break;
+  let name = document.getElementById("title1");
+  for (let i = imgArrayDescargados.length - 1; i >= 0; i--) {
+    if (imgArrayDescargados[i].nombre == name.innerHTML) {
+      if (i === imgArrayDescargados.length + 1) {
+        return;
       }
-      document.getElementById("mainImage").src = imgArray[i - 1].src;
-      document.getElementById("title1").innerHTML = imgArray[i - 1].nombre;
+      document.getElementById("mainImage").src = imgArrayDescargados[i - 1].src;
+      document.getElementById("title1").innerHTML =
+        imgArrayDescargados[i - 1].nombre;
       document.getElementById("description1").innerHTML =
-        imgArray[i - 1].description;
-      break;
+        imgArrayDescargados[i - 1].description;
+      return;
     }
   }
 }
@@ -263,40 +330,33 @@ document.getElementById("description").innerHTML = imgArray2[0].description;
 document.getElementById("mainImage2").src = imgArray2[0].src;
 
 function nextImage2() {
-  let img = document.getElementById("mainImage2");
+  let name = document.getElementById("title");
   for (let i = 0; i < imgArray2.length; i++) {
-    if (imgArray2[i].src == img.src) {
-      if (i === imgArray2.length) {
-        document.getElementById("title").innerHTML = imgArray2[0].nombre;
-        document.getElementById("description").innerHTML =
-          imgArray2[0].description;
-        document.getElementById("mainImage2").src = imgArray2[0].src;
-        break;
-      }
+    if (imgArray2[i].nombre == name.innerHTML) {
+      if (i === imgArray2.length - 1) {
+        return;
+      } 
+
       document.getElementById("title").innerHTML = imgArray2[i + 1].nombre;
       document.getElementById("description").innerHTML =
         imgArray2[i + 1].description;
       document.getElementById("mainImage2").src = imgArray2[i + 1].src;
-      break;
+      return;
     }
   }
 }
 function previousImage2() {
-  let img = document.getElementById("mainImage2");
+  let name = document.getElementById("title");
   for (let i = imgArray2.length - 1; i >= 0; i--) {
-    if (imgArray2[i].src == img.src) {
-      if (i === imgArray2.length) {
-        document.getElementById("title").innerHTML = imgArray2[9].nombre;
-        document.getElementById("description").innerHTML =
-          imgArray2[9].description;
-        document.getElementById("mainImage2").src = imgArray2[9].src;
-        break;
+    if (imgArray2[i].nombre == name.innerHTML) {
+      if (i === imgArray2.length + 1) {
+        return
       }
+      document.getElementById("mainImage2").src = imgArray2[i - 1].src;
       document.getElementById("title").innerHTML = imgArray2[i - 1].nombre;
       document.getElementById("description").innerHTML =
         imgArray2[i - 1].description;
-      document.getElementById("mainImage2").src = imgArray2[i - 1].src;
-      break;
+      return;
     }
   }
 }
