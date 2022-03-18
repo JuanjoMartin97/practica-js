@@ -75,8 +75,8 @@ for (let i in archivos3d) {
                           <p> Categorias: ${archivos3d[i].categoria}</p>            
                             <b>  ${archivos3d[i].description}<b/>
                            <br>
-                           <input type="checkbox" id="accept"> Agregar a descargas             
-                           <button> Quitar! </button>
+                           <input type="checkbox" id="chkMarket"> Agregar a descargas           
+                           <button id="quit"> Quitar! </button>
                             </div> 
                             <br>`;
   document.getElementById("contenedor").appendChild(contenedor);
@@ -127,8 +127,8 @@ function filtroCategoria() {
                                   <p> Categorias: ${catFiltrada[i].categoria}</p>            
                                     <b>  ${catFiltrada[i].description}</b>
                                    <br>
-                                   <input type="checkbox" id="accept"> Agregar a descargas
-                                   <button> Quitar! </button>
+                                   <input type="checkbox" id="chkMarket"> Agregar a descargas
+                                   <button id="quit"> Quitar! </button>
                                    </div> 
                                    <br>`;
         contenedorImagenes.appendChild(contenedor);
@@ -270,7 +270,7 @@ imgArray2.push(
   new archivosArray2(
     "Zeddmore GhostBusters",
     "Personajes Zeddemore GhostBusters Figura",
-    "/img/stl/vegeta.jpg"
+    "/img/stl/ghostbusters-zeddemore.jpg"
   )
 );
 
@@ -335,7 +335,7 @@ function nextImage2() {
     if (imgArray2[i].nombre == name.innerHTML) {
       if (i === imgArray2.length - 1) {
         return;
-      } 
+      }
 
       document.getElementById("title").innerHTML = imgArray2[i + 1].nombre;
       document.getElementById("description").innerHTML =
@@ -350,7 +350,7 @@ function previousImage2() {
   for (let i = imgArray2.length - 1; i >= 0; i--) {
     if (imgArray2[i].nombre == name.innerHTML) {
       if (i === imgArray2.length + 1) {
-        return
+        return;
       }
       document.getElementById("mainImage2").src = imgArray2[i - 1].src;
       document.getElementById("title").innerHTML = imgArray2[i - 1].nombre;
