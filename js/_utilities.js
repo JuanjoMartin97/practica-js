@@ -28,11 +28,13 @@ function topFunction() {
 // --------------------------------------------------------\\
 
 // //---------------- CONTADOR DE CHECKBOX ------------------\\
+
 function checkboxes() {
   let inputs = document.getElementsByTagName("input");
   let inputObj;
   let selectedCount = 0;
   let p = document.getElementById("display");
+
   for (let count1 = 0; count1 < inputs.length; count1++) {
     inputObj = inputs[count1];
     let type = inputObj.getAttribute("type");
@@ -43,6 +45,7 @@ function checkboxes() {
   }
   //-----ESTA LINEA HACE QUE SE MUESTRE EN EL INPUT----//
   document.getElementById("value").value = selectedCount;
+  localStorage.setItem('contadora', selectedCount);
   //---------------- alertas ---------------------\\
   if (selectedCount > 0) {
     alert("Seleccionaste " + selectedCount + " archivos");
@@ -53,15 +56,25 @@ function checkboxes() {
     //---------- SE LE DA AL PARRAFO EL VALOR LA VARIABLE CONTADORA -------
     p.textContent = " No se seleccionó ningún archivo ";
   }
+
 }
 
-function guardarChk() {	
-	let checkbox = document.getElementById("chkMarket");
-    localStorage.setItem("chkMarket", checkbox.checked);	
+function load(){    
+  let checked = JSON.parse(localStorage.getItem('chkMarket'));
+  document.getElementById('chkMarket').checked = checked;
+  document.getElementById('value').value = JSON.parse(localStorage.getItem('contadora'));
 }
-//Cuando se cargue 
-let checked = JSON.parse(localStorage.getItem("chkMarket"));
-    document.getElementById("chkMarket").checked = checked;
+function save(){
+  let checkbox = document.getElementById('chkMarket');
+  localStorage.setItem('chkMarket', checkbox.checked);
+}
+function clear(){
+  location.reload();
+  localStorage.clear()
+}
+
+load();
+
 
 //--------------------------------------------------------\\
 

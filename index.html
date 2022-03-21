@@ -72,10 +72,9 @@
           <!-- ICONO DEL CARRITO-->
           <button
             id="btnCarrito"
-            onClick="checkboxes();"
-            onClick="showHide ;"
-            onClick="guardarChk ;"
-            ()"
+            onClick="checkboxes();",
+            onClick="showHide();"
+            onclick="save();"
             style="background-color: black"
           >
             <div class="cart">
@@ -87,7 +86,7 @@
                   name="value"
                   id="value"
                   disabled
-                  style="text-align: center; width: 2rem"
+                  style="text-align: center; width: 2rem; color: white;"
                 />
               </span>
             </div>
@@ -155,18 +154,21 @@
       </div>
       <h2>MAS DESCARGADOS!</h2>
       <div class="arrays">
+        <!--PRIMER ARRAY - IZQUIERDA -->
         <div id="splash" >
           <h3 id="title1" style="color: white;"></h3>
           <p id="description1" style="color:white" ></p>
           <img id="mainImage"/>
         </div>
+        <!-- BOTONES -->
         <div id="controls">
           <button class="buttons" id="previousbtn" onclick="previousImage2();previousImage();">
             Anterior
           </button>
           <button class="buttons" id="nextbtn" onclick="nextImage2(); nextImage();" >Siguiente </button>
         </div>
-        <div id="splash1">
+        <!--SEGUNDO ARRAY - DERECHA-->
+        <div id="splash1" >
           <h3 id="title" style="color: white;"></h3>
           <p id="description" style="color:white" ></p>
           <img id="mainImage2"/>    
@@ -174,6 +176,9 @@
       </div>
       <div>
         <input id="buscador" type="text" oninput="filtroCategoria()" placeholder="Busqueda por Categorias"/>
+      </div>
+      <div>
+        <input type="checkbox" id="chkMarket">que onda
       </div>
       <div class="sinCategoria" id="noCategoria"> 
         </div> 

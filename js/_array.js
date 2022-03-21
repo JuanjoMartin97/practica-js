@@ -1,3 +1,4 @@
+
 //arrays con los archivos utilizados para las cards//
 const tagsArchivos = [
   "Figura",
@@ -75,8 +76,9 @@ for (let i in archivos3d) {
                           <p> Categorias: ${archivos3d[i].categoria}</p>            
                             <b>  ${archivos3d[i].description}<b/>
                            <br>
-                           <input type="checkbox" id="chkMarket"> Agregar a descargas           
-                           <button id="quit"> Quitar! </button>
+                           <input type="checkbox" id="chkMarket" class="box"> Agregar a descargas           
+                           <button id="save" onclick="save()"> Guardar! </button> <br>
+                           <button id="quit"onclick="clear()"> Quitar! </button>
                             </div> 
                             <br>`;
   document.getElementById("contenedor").appendChild(contenedor);
@@ -127,8 +129,9 @@ function filtroCategoria() {
                                   <p> Categorias: ${catFiltrada[i].categoria}</p>            
                                     <b>  ${catFiltrada[i].description}</b>
                                    <br>
-                                   <input type="checkbox" id="chkMarket"> Agregar a descargas
-                                   <button id="quit"> Quitar! </button>
+                                   <input type="checkbox" id="chkMarket" class="box"> Agregar a descargas
+                                   <button id="save" onclick="save()"> Guardar! </button> <br>
+                                   <button id="quit" onclick="wis()"> Quitar! </button>
                                    </div> 
                                    <br>`;
         contenedorImagenes.appendChild(contenedor);
