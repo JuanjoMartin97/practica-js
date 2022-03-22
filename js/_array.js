@@ -8,6 +8,23 @@ const tagsArchivos = [
   "Mascara",
   "Joystick",
 ];
+function ImgArray(nombre, description, link) {
+  this.nombre = nombre;
+  this.description = description;
+  this.src = link;
+}
+function Archivos(nombre, description, link, categoria) {
+  this.nombre = nombre;
+  this.description = description;
+  this.src = link;
+  this.categoria = categoria;
+}
+function archivosArray2(nombre, description, src) {
+  this.nombre = nombre;
+  this.description = description;
+  this.src = src;
+}
+
 const archivos3d = [];
 
 archivos3d.push(
@@ -58,12 +75,138 @@ archivos3d.push(
   )
 );
 
-function Archivos(nombre, description, link, categoria) {
-  this.nombre = nombre;
-  this.description = description;
-  this.src = link;
-  this.categoria = categoria;
-}
+
+//ARRAY DE LOS MAS DESCARGADOS//
+// COMIENZO PRIMER ARRAY //
+
+const imgArrayDescargados = [];
+
+imgArrayDescargados.push(
+  new ImgArray("Trunks", "Trunks del Futuro", "/img/dbz-trunks/Trunks.jpeg")
+);
+imgArrayDescargados.push(
+  new ImgArray(
+    "Luffy Gear 4",
+    "Figura Luffy One Piece",
+    "/img/stl/LuffyGear4.jpg"
+  )
+);
+imgArrayDescargados.push(
+  new ImgArray(
+    "Goku vs Broly",
+    "Figura de la pelea Goku Broly pelicula",
+    "/img/stl/broly-vs-goku-3d-model-stl.jpg"
+  )
+);
+imgArrayDescargados.push(
+  new ImgArray(
+    "Ronoroa Zoro",
+    "Figura Zoro One Piece",
+    "/img/stl/zoro-busto.jpg"
+  )
+);
+imgArrayDescargados.push(
+  new ImgArray("Naruto Fuko", "Funko Naruto ender3", "/img/stl/narutofunko.png")
+);
+imgArrayDescargados.push(
+  new ImgArray(
+    "Nezuko Figura",
+    "Figura Nezuko Demon Slayer",
+    "/img/stl/nezukoStl.jpg"
+  )
+);
+imgArrayDescargados.push(
+  new ImgArray(
+    "Rengoku Demon Slayer",
+    "Figura Rengoku Demon Slayer",
+    "/img/stl/rengoku-demon.jpg"
+  )
+);
+imgArrayDescargados.push(
+  new ImgArray(
+    "Goku SSJ DBZ",
+    "Figura Goku DBZ - Kakarot SSJ",
+    "/img/stl/GokuSS.jpeg"
+  )
+);
+imgArrayDescargados.push(
+  new ImgArray(
+    "Vegeta Funko",
+    "Vegeta DBZ Funko Replica ender3",
+    "/img/stl/vegeta.jpg"
+  )
+);
+
+console.log(imgArrayDescargados);
+
+// COMIENZO SEGUNDO ARRAY //
+
+let imgArray2 = [];
+
+imgArray2.push(
+  new archivosArray2(
+    "Black Widow - The Avengers",
+    "BlackWidow The Avengers figura",
+    "img/stl/blackwidow.jpg"
+  )
+);
+imgArray2.push(
+  new archivosArray2(
+    "Capitan America - The Avengers",
+    "Figura Capitan America The Avergers",
+    "img/stl/CaptainAmericaBust.jpg"
+  )
+);
+imgArray2.push(
+  new archivosArray2(
+    "Arbol Bonsai",
+    "Arbol Bonsai Deco",
+    "img/stl/Bonsai-Tree-and-Pot.jpg"
+  )
+);
+imgArray2.push(
+  new archivosArray2(
+    "Soporte Voltorb Pokemon Joystick",
+    "Soporte Joystick Voltorb Pokemon 1Gen",
+    "img/stl/soporte-control-ps4-Pokemon.jpg"
+  )
+);
+imgArray2.push(
+  new archivosArray2(
+    "Soporte Joystick Halo",
+    "Soporte Joystick Master Chief Halo XBOX",
+    "img/stl/soporte-halo.jpg"
+  )
+);
+imgArray2.push(
+  new archivosArray2(
+    "Ray GhostBusters",
+    "Personaje Ray GhostBusters Figura",
+    "img/stl/ghostbusters-ray.jpg"
+  )
+);
+imgArray2.push(
+  new archivosArray2(
+    "Spengler GhostBusters",
+    "Personaje Spengler GhostBusters Figura",
+    "img/stl/ghostbusters-spengler.jpg"
+  )
+);
+imgArray2.push(
+  new archivosArray2(
+    "Venkman GhostBusters",
+    "Personaje Venkman GhostBusters Figura",
+    "img/stl/ghostbusters-venkman.jpg"
+  )
+);
+imgArray2.push(
+  new archivosArray2(
+    "Zeddmore GhostBusters",
+    "Personajes Zeddemore GhostBusters Figura",
+    "/img/stl/ghostbusters-zeddemore.jpg"
+  )
+);
+
 
 // creamos los elementos del html y treamos los elementos del array//
 for (let i in archivos3d) {
@@ -144,153 +287,13 @@ function filtroCategoria() {
   console.log(catFiltrada);
 }
 
-//ARRAY DE LOS MAS DESCARGADOS//
-const imgArrayDescargados = [];
-
-imgArrayDescargados.push(
-  new ImgArray("Trunks", "Trunks del Futuro", "/img/dbz-trunks/Trunks.jpeg")
-);
-imgArrayDescargados.push(
-  new ImgArray(
-    "Luffy Gear 4",
-    "Figura Luffy One Piece",
-    "/img/stl/LuffyGear4.jpg"
-  )
-);
-imgArrayDescargados.push(
-  new ImgArray(
-    "Goku vs Broly",
-    "Figura de la pelea Goku Broly pelicula",
-    "/img/stl/broly-vs-goku-3d-model-stl.jpg"
-  )
-);
-imgArrayDescargados.push(
-  new ImgArray(
-    "Ronoroa Zoro",
-    "Figura Zoro One Piece",
-    "/img/stl/zoro-busto.jpg"
-  )
-);
-imgArrayDescargados.push(
-  new ImgArray("Naruto Fuko", "Funko Naruto ender3", "/img/stl/narutofunko.png")
-);
-imgArrayDescargados.push(
-  new ImgArray(
-    "Nezuko Figura",
-    "Figura Nezuko Demon Slayer",
-    "/img/stl/nezukoStl.jpg"
-  )
-);
-imgArrayDescargados.push(
-  new ImgArray(
-    "Rengoku Demon Slayer",
-    "Figura Rengoku Demon Slayer",
-    "/img/stl/rengoku-demon.jpg"
-  )
-);
-imgArrayDescargados.push(
-  new ImgArray(
-    "Goku SSJ DBZ",
-    "Figura Goku DBZ - Kakarot SSJ",
-    "/img/stl/GokuSS.jpeg"
-  )
-);
-imgArrayDescargados.push(
-  new ImgArray(
-    "Vegeta Funko",
-    "Vegeta DBZ Funko Replica ender3",
-    "/img/stl/vegeta.jpg"
-  )
-);
-
-console.log(imgArrayDescargados);
-
-function ImgArray(nombre, description, link) {
-  this.nombre = nombre;
-  this.description = description;
-  this.src = link;
-}
-
-let imgArray2 = [];
-
-imgArray2.push(
-  new archivosArray2(
-    "Black Widow - The Avengers",
-    "BlackWidow The Avengers figura",
-    "img/stl/blackwidow.jpg"
-  )
-);
-imgArray2.push(
-  new archivosArray2(
-    "Capitan America - The Avengers",
-    "Figura Capitan America The Avergers",
-    "img/stl/CaptainAmericaBust.jpg"
-  )
-);
-imgArray2.push(
-  new archivosArray2(
-    "Arbol Bonsai",
-    "Arbol Bonsai Deco",
-    "img/stl/Bonsai-Tree-and-Pot.jpg"
-  )
-);
-imgArray2.push(
-  new archivosArray2(
-    "Soporte Voltorb Pokemon Joystick",
-    "Soporte Joystick Voltorb Pokemon 1Gen",
-    "img/stl/soporte-control-ps4-Pokemon.jpg"
-  )
-);
-imgArray2.push(
-  new archivosArray2(
-    "Soporte Joystick Halo",
-    "Soporte Joystick Master Chief Halo XBOX",
-    "img/stl/soporte-halo.jpg"
-  )
-);
-imgArray2.push(
-  new archivosArray2(
-    "Ray GhostBusters",
-    "Personaje Ray GhostBusters Figura",
-    "img/stl/ghostbusters-ray.jpg"
-  )
-);
-imgArray2.push(
-  new archivosArray2(
-    "Spengler GhostBusters",
-    "Personaje Spengler GhostBusters Figura",
-    "img/stl/ghostbusters-spengler.jpg"
-  )
-);
-imgArray2.push(
-  new archivosArray2(
-    "Venkman GhostBusters",
-    "Personaje Venkman GhostBusters Figura",
-    "img/stl/ghostbusters-venkman.jpg"
-  )
-);
-imgArray2.push(
-  new archivosArray2(
-    "Zeddmore GhostBusters",
-    "Personajes Zeddemore GhostBusters Figura",
-    "/img/stl/ghostbusters-zeddemore.jpg"
-  )
-);
-
-function archivosArray2(nombre, description, src) {
-  this.nombre = nombre;
-  this.description = description;
-  this.src = src;
-}
-
-// COMIENZO PRIMER VECTOR //
 
 document.getElementById("title1").innerHTML = imgArrayDescargados[0].nombre;
 document.getElementById("description1").innerHTML =
   imgArrayDescargados[0].description;
 document.getElementById("mainImage").src = imgArrayDescargados[0].src;
 
-// ------------- FUNCION RECORRER PRIMER VECTOR IMG ---------
+// ------------- FUNCION RECORRER PRIMER ARRAY IMG ---------
 function nextImage() {
   let name = document.getElementById("title1");
   for (let i = 0; i < imgArrayDescargados.length; i++) {
