@@ -48,7 +48,12 @@ function checkboxes() {
   localStorage.setItem('contadora', selectedCount);
   //---------------- alertas ---------------------\\
   if (selectedCount > 0) {
-    alert("Seleccionaste " + selectedCount + " archivos");
+    Swal.fire({
+      position: 'top-end',
+      title: 'Seleccionaste ',
+      text:    selectedCount + '  archivos',
+      icon:'success'
+    })
     //---------- SE LE DA AL VALOR DEL PARRAFO LA VARIABLE CONTADORA -------
     p.textContent = "Cantidad de archivos " + selectedCount;
   } else {
@@ -88,3 +93,5 @@ load();
 // //
 // //   }
 // // }
+
+

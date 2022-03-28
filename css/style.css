@@ -71,7 +71,8 @@ body {
     justify-items: center;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
-    grid-template-areas: "splash splash1" "controls controls "; }
+    grid-template-areas: "splash splash1"
+ "controls controls "; }
     body .arrays #splash {
       margin-top: 3rem;
       grid-area: splash; }
