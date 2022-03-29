@@ -18,8 +18,12 @@
     <header>
       <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
-
-          <a href=""><img src="img/3dprint.svg" alt="" style="width: 100px;background-color: rgb(173, 12, 12);"></a>
+          <a href=""
+            ><img
+              src="img/3dprint.svg"
+              alt=""
+              style="width: 100px; background-color: rgb(173, 12, 12)"
+          /></a>
           <button
             class="navbar-toggler"
             type="button"
@@ -73,7 +77,8 @@
           <!-- ICONO DEL CARRITO-->
           <button
             id="btnCarrito"
-            onClick="checkboxes();",
+            onClick="checkboxes();"
+            ,
             onClick="showHide();"
             onclick="save();"
             style="background-color: black"
@@ -87,7 +92,7 @@
                   name="value"
                   id="value"
                   disabled
-                  style="text-align: center; width: 2rem; color: white;"
+                  style="text-align: center; width: 2rem; color: white"
                 />
               </span>
             </div>
@@ -156,43 +161,56 @@
       <h2>MAS DESCARGADOS!</h2>
       <div class="arrays">
         <!--PRIMER ARRAY - IZQUIERDA -->
-        <div id="splash" >
-          <h3 id="title1" style="color: white;"></h3>
-          <p id="description1" style="color:white" ></p>
-          <img id="mainImage"/>
+        <div id="splash">
+          <h3 id="title1" style="color: white"></h3>
+          <p id="description1" style="color: white"></p>
+          <img id="mainImage" />
         </div>
         <!-- BOTONES -->
         <div id="controls">
-          <button class="buttons" id="previousbtn" onclick="previousImage2();previousImage();">
+          <button
+            class="buttons"
+            id="previousbtn"
+            onclick="previousImage2();previousImage();"
+          >
             Anterior
           </button>
-          <button class="buttons" id="nextbtn" onclick="nextImage2(); nextImage();" >Siguiente </button>
+          <button
+            class="buttons"
+            id="nextbtn"
+            onclick="nextImage2(); nextImage();"
+          >
+            Siguiente
+          </button>
         </div>
         <!--SEGUNDO ARRAY - DERECHA-->
-        <div id="splash1" >
-          <h3 id="title" style="color: white;"></h3>
-          <p id="description" style="color:white" ></p>
-          <img id="mainImage2"/>    
-        </div>  
+        <div id="splash1">
+          <h3 id="title" style="color: white"></h3>
+          <p id="description" style="color: white"></p>
+          <img id="mainImage2" />
+        </div>
       </div>
       <div>
-        <input id="buscador" type="text" oninput="filtroCategoria()" placeholder="Busqueda por Categorias"/>
+        <input
+          id="buscador"
+          type="text"
+          oninput="filtroCategoria()"
+          placeholder="Busqueda por Categorias"
+        />
       </div>
-      <div>
-        <input type="checkbox" id="chkMarket">que onda
-      </div>
-      <div class="sinCategoria" id="noCategoria"> 
-        </div> 
-      <div class="contenedor" id="contenedor">   
-      </div>
+      <div><input type="checkbox" id="chkMarket" />que onda</div>
+      <div class="sinCategoria" id="noCategoria"></div>
+      <div class="contenedor" id="contenedor"></div>
       <div class="btnTD">
-        <button onclick="topFunction()" id="topBtn" title="Go to top">Inicio</button>
+        <button onclick="topFunction()" id="topBtn" title="Go to top">
+          Inicio
+        </button>
       </div>
     </main>
     <script src="js/_utilities.js"></script>
     <script src="js/_search.js"></script>
     <script src="js/_array.js"></script>
-    <script src="js/_class.js" ></script>
+    <script src="js/_class.js"></script>
     <script src="anime.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script

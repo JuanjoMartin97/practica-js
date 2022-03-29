@@ -208,6 +208,7 @@ imgArray2.push(
 );
 
 
+
 // creamos los elementos del html y treamos los elementos del array//
 for (let i in archivos3d) {
   let contenedor = document.createElement("div");
@@ -220,8 +221,9 @@ for (let i in archivos3d) {
                             <b>  ${archivos3d[i].description}<b/>
                            <br>
                            <input type="checkbox" id="chkMarket" class="box"> Agregar a descargas           
-                           <button id="save" onclick="save()"> Guardar! </button> <br>
-                           <button id="quit"onclick="clear()"> Quitar! </button>
+                           <button id="save"  onclick="save()" class="button"> Guardar! </button> <br>
+                           <br>
+                           <button id="quit" onclick="clear()"> Quitar! </button>
                             </div> 
                             <br>`;
   document.getElementById("contenedor").appendChild(contenedor);
@@ -273,7 +275,7 @@ function filtroCategoria() {
                                     <b>  ${catFiltrada[i].description}</b>
                                    <br>
                                    <input type="checkbox" id="chkMarket" class="box"> Agregar a descargas
-                                   <button id="save" onclick="save()"> Guardar! </button> <br>
+                                   <button id="save"  onclick="save()" class="button"> Guardar! </button> <br>
                                    <button id="quit" onclick="wis()"> Quitar! </button>
                                    </div> 
                                    <br>`;
@@ -287,6 +289,31 @@ function filtroCategoria() {
   console.log(catFiltrada);
 }
 
+
+//ALERTA DE LOS BOTONES GUARDAR//
+const allbtn = document.querySelectorAll('.button');
+let elements = Array.from(allbtn);
+elements.forEach(function(e) {
+  console.log(e);
+});
+
+for (const button of allbtn) {
+  button.addEventListener('click', function(event) {
+    Swal.fire({
+      title: 'Agregaste un archivo',
+      width: 600,
+      padding: '3em',
+      color: '#716add',
+      background: '#fff url(/images/trees.png)',
+      backdrop: `
+        rgba(0,0,123,0.4)
+        url("/img/print3d.gif")
+        left top
+        no-repeat
+      `
+    })
+  })
+}
 
 document.getElementById("title1").innerHTML = imgArrayDescargados[0].nombre;
 document.getElementById("description1").innerHTML =
