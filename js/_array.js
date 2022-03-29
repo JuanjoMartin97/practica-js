@@ -219,9 +219,8 @@ for (let i in archivos3d) {
                           <br> 
                           <p> Categorias: ${archivos3d[i].categoria}</p>            
                             <b>  ${archivos3d[i].description}<b/>
-                           <br>
-                           <input type="checkbox" id="chkMarket" class="box"> Agregar a descargas           
-                           <button id="save"  onclick="save()" class="button"> Guardar! </button> <br>
+                           <br>         
+                           <button id="save"  class="button"> Guardar! </button> <br>
                            <br>
                            <button id="quit" onclick="clear()"> Quitar! </button>
                             </div> 
@@ -274,8 +273,7 @@ function filtroCategoria() {
                                   <p> Categorias: ${catFiltrada[i].categoria}</p>            
                                     <b>  ${catFiltrada[i].description}</b>
                                    <br>
-                                   <input type="checkbox" id="chkMarket" class="box"> Agregar a descargas
-                                   <button id="save"  onclick="save()" class="button"> Guardar! </button> <br>
+                                   <button id="save"  class="button"> Guardar! </button> <br>
                                    <button id="quit" onclick="wis()"> Quitar! </button>
                                    </div> 
                                    <br>`;
@@ -290,21 +288,20 @@ function filtroCategoria() {
 }
 
 
-//ALERTA DE LOS BOTONES GUARDAR//
+// ALERTA BOTONES //
 const allbtn = document.querySelectorAll('.button');
 let elements = Array.from(allbtn);
 elements.forEach(function(e) {
   console.log(e);
 });
-
 for (const button of allbtn) {
   button.addEventListener('click', function(event) {
     Swal.fire({
-      title: 'Agregaste un archivo',
+      title: 'Agregaste el archivo  ',
       width: 600,
       padding: '3em',
       color: '#716add',
-      background: '#fff url(/images/trees.png)',
+      background: '',
       backdrop: `
         rgba(0,0,123,0.4)
         url("/img/print3d.gif")

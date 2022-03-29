@@ -27,59 +27,98 @@ function topFunction() {
 
 // --------------------------------------------------------\\
 
-// //---------------- CONTADOR DE CHECKBOX ------------------\\
+// ------- CARRITO ESTATICO ----------\\
 
-function checkboxes() {
-  let inputs = document.getElementsByTagName("input");
-  let inputObj;
-  let selectedCount = 0;
-  let p = document.getElementById("display");
+const button = document.getElementById("btnCarrito");
+const popup = document.querySelector(".popup-wrapper");
+const close = document.querySelector(".popup-close");
 
-  for (let count1 = 0; count1 < inputs.length; count1++) {
-    inputObj = inputs[count1];
-    let type = inputObj.getAttribute("type");
-    //------------ CONDICION Y ACUMULADOR -------------\\
-    if (type == "checkbox" && inputObj.checked) {
-      selectedCount++;
-    }
+button.addEventListener("click", () => {
+  popup.style.display = "block";
+});
+
+close.addEventListener("click", () => {
+  popup.style.display = "none";
+});
+
+popup.addEventListener("click", (e) => {
+  // console.log(e);
+  if (e.target.className === "popup-wrapper") {
+    popup.style.display = "none";
   }
-  //-----ESTA LINEA HACE QUE SE MUESTRE EN EL INPUT----//
-  document.getElementById("value").value = selectedCount;
-  localStorage.setItem('contadora', selectedCount);
-  //---------------- alertas ---------------------\\
-  if (selectedCount > 0) {
-    Swal.fire({
-      position: 'top-end',
-      title: 'Seleccionaste ',
-      text:    selectedCount + '  archivos',
-      icon:'success'
-    })
-    //---------- SE LE DA AL VALOR DEL PARRAFO LA VARIABLE CONTADORA -------
-    p.textContent = "Cantidad de archivos " + selectedCount;
-  } else {
-    // alert("No agregaste ningún archivo");
-    //---------- SE LE DA AL PARRAFO EL VALOR LA VARIABLE CONTADORA -------
-    p.textContent = " No se seleccionó ningún archivo ";
+});
+
+function cargarArrayPopu() {
+  productList = [
+    "Electronics Watch",
+    "House wear Items",
+    "Kids wear",
+    "Women Fashion",
+  ];
+
+  let contentedorPopup = document.createElement("ol");
+  for (let i in productList) {
+    let elementoLista = document.createElement("li");
+    elementoLista.innerHTML = productList[i];
+    contentedorPopup.appendChild(elementoLista);
   }
-
+  document.getElementById("containerPopu").appendChild(contentedorPopup);
 }
+cargarArrayPopu();
 
-function load(){    
-  let checked = JSON.parse(localStorage.getItem('chkMarket'));
-  document.getElementById('chkMarket').checked = checked;
-  document.getElementById('value').value = JSON.parse(localStorage.getItem('contadora'));
-}
-function save(){
-  let checkbox = document.getElementById('chkMarket');
-  localStorage.setItem('chkMarket', checkbox.checked);
-}
-function clear(){
-  location.reload();
-  localStorage.clear()
-}
 
-load();
+// ---------------- CONTADOR DE CHECKBOX ------------------\\
 
+// function checkboxes() {
+//   let inputs = document.getElementsByTagName("input");
+//   let inputObj;
+//   let selectedCount = 0;
+//   let p = document.getElementById("display");
+
+//   for (let count1 = 0; count1 < inputs.length; count1++) {
+//     inputObj = inputs[count1];
+//     let type = inputObj.getAttribute("type");
+//     ------------ CONDICION Y ACUMULADOR -------------\\
+//     if (type == "checkbox" && inputObj.checked) {
+//       selectedCount++;
+//     }
+//   }
+//   -----ESTA LINEA HACE QUE SE MUESTRE EN EL INPUT----//
+//   document.getElementById("value").value = selectedCount;
+//   localStorage.setItem('contadora', selectedCount);
+//   ---------------- alertas ---------------------\\
+//   if (selectedCount > 0) {
+//     Swal.fire({
+//       position: 'top-end',
+//       title: 'Seleccionaste ',
+//       text:    selectedCount + '  archivos',
+//       icon:'success'
+//     })
+//     ---------- SE LE DA AL VALOR DEL PARRAFO LA VARIABLE CONTADORA -------
+//     p.textContent = "Cantidad de archivos " + selectedCount;
+//   } else {
+//     alert("No agregaste ningún archivo");
+//     ---------- SE LE DA AL PARRAFO EL VALOR LA VARIABLE CONTADORA -------
+//     p.textContent = " No se seleccionó ningún archivo ";
+//   }
+
+// }
+
+// function load(){
+//   let checked = JSON.parse(localStorage.getItem('chkMarket'));
+//   document.getElementById('chkMarket').checked = checked;
+//   document.getElementById('value').value = JSON.parse(localStorage.getItem('contadora'));
+// }
+// function save(){
+//   let checkbox = document.getElementById('chkMarket');
+//   localStorage.setItem('chkMarket', checkbox.checked);
+// }
+// function clear(){
+//   location.reload();
+//   localStorage.clear()
+// }
+
+// load();
 
 //--------------------------------------------------------\\
 
@@ -93,5 +132,3 @@ load();
 // //
 // //   }
 // // }
-
-

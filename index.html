@@ -77,10 +77,7 @@
           <!-- ICONO DEL CARRITO-->
           <button
             id="btnCarrito"
-            onClick="checkboxes();"
-            ,
             onClick="showHide();"
-            onclick="save();"
             style="background-color: black"
           >
             <div class="cart">
@@ -101,6 +98,13 @@
       </nav>
     </header>
     <main>
+      <div class="popup-wrapper" id="popupCarrito">
+        <div class="popup">
+          <div class="popup-close">x</div>
+          <div class="popup-content" id="containerPopu">
+          </div>
+        </div>
+      </div>
       <div
         id="carouselExampleCaptions"
         class="carousel slide"
@@ -198,7 +202,6 @@
           placeholder="Busqueda por Categorias"
         />
       </div>
-      <div><input type="checkbox" id="chkMarket" />que onda</div>
       <div class="sinCategoria" id="noCategoria"></div>
       <div class="contenedor" id="contenedor"></div>
       <div class="btnTD">
@@ -210,8 +213,6 @@
     <script src="js/_utilities.js"></script>
     <script src="js/_search.js"></script>
     <script src="js/_array.js"></script>
-    <script src="js/_class.js"></script>
-    <script src="anime.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
