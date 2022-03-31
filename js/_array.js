@@ -220,9 +220,9 @@ for (let i in archivos3d) {
                           <p> Categorias: ${archivos3d[i].categoria}</p>            
                             <b>  ${archivos3d[i].description}<b/>
                            <br>         
-                           <button id="save"  class="button"> Guardar! </button> <br>
+                           <button id="save"  class="buttonSave"> Guardar! </button> <br>
                            <br>
-                           <button id="quit" onclick="clear()"> Quitar! </button>
+                           <button id="quit"  class="buttonQuit" onclick="clear()"> Quitar! </button>
                             </div> 
                             <br>`;
   document.getElementById("contenedor").appendChild(contenedor);
@@ -273,8 +273,8 @@ function filtroCategoria() {
                                   <p> Categorias: ${catFiltrada[i].categoria}</p>            
                                     <b>  ${catFiltrada[i].description}</b>
                                    <br>
-                                   <button id="save"  class="button"> Guardar! </button> <br>
-                                   <button id="quit" onclick="wis()"> Quitar! </button>
+                                   <button id="save"  class="buttonSave"> Guardar! </button> <br>
+                                   <button id="quit"  class="buttonQuit"> Quitar! </button>
                                    </div> 
                                    <br>`;
         contenedorImagenes.appendChild(contenedor);
@@ -289,7 +289,7 @@ function filtroCategoria() {
 
 
 // ALERTA BOTONES //
-const allbtn = document.querySelectorAll('.button');
+const allbtn = document.querySelectorAll('.buttonSave');
 let elements = Array.from(allbtn);
 elements.forEach(function(e) {
   console.log(e);
