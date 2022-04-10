@@ -53,72 +53,12 @@ body .popup-wrapper {
   height: 100%;
   display: none; }
 
-body .popup {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
-  width: 100%;
-  max-width: 300px;
-  background: white;
-  margin: 10% auto;
-  padding: 20px;
-  position: relative; }
-  body .popup a {
-    background: salmon;
-    color: white;
-    text-decoration: none;
-    padding: 6px 10px;
-    margin: 30px auto;
-    display: block;
-    width: 50%; }
-    body .popup a:hover {
-      background: palevioletred;
-      transition: all 0.2s; }
-
-body .popup-close {
-  position: absolute;
-  top: 5px;
-  right: 15px;
-  cursor: pointer;
-  font-size: 1.5rem; }
-
 body .contenedor {
-  width: 60%;
-  gap: 30px;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   margin: 0 auto; }
-  body .contenedor .card {
-    margin-top: 3rem;
-    width: 100%;
-    align-items: center;
-    text-align: center;
-    background-color: black;
-    color: white;
-    border-radius: 30px;
-    border: 2px solid red; }
-    body .contenedor .card .buttonSave {
-      background-color: #4CAF50;
-      /* Green */
-      border: none;
-      color: white;
-      padding: 15px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px; }
-    body .contenedor .card .buttonQuit {
-      background-color: #f44336;
-      /* Green */
-      border: none;
-      color: white;
-      padding: 15px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 12px; }
 
 body .arrays {
   width: 100%;
@@ -192,3 +132,6 @@ body .btnTD #topBtn {
 h2 {
   text-align: center;
   color: red; }
+
+.img-items {
+  width: 100px; }

@@ -77,7 +77,6 @@
           <!-- ICONO DEL CARRITO-->
           <button
             id="btnCarrito"
-            onClick="showHide();"
             style="background-color: black"
           >
             <div class="cart">
@@ -98,12 +97,21 @@
       </nav>
     </header>
     <main>
-      <div class="popup-wrapper" id="popupCarrito">
-        <div class="popup">
-          <div class="popup-close">x</div>
-          <div class="popup-content" id="containerPopu">
+      <div class="modal " tabindex="-1" id="popupCarrito">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="containerPopu" >
+              
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary " data-bs-dismiss="modal">Vaciar</button>
+              <button  onclick="download()" class="btn btn-primary">Descargar</button>
+            </div>
           </div>
-          <button onclick="download()">dowload </button>
         </div>
       </div>
       <div
@@ -204,16 +212,30 @@
         />
       </div>
       <div class="sinCategoria" id="noCategoria"></div>
-      <div class="contenedor" id="contenedor"></div>
+      <div class="contenedor container py-5 " id="contenedor">
+        <template id ="templateCard">
+          <div class="cards card card-body " style="width: 21rem; ">
+            <h2 class="cardName card-title"></h2>
+            <h3 class="idCard"></h3>
+            <p class="cardDescription "></p>
+            <img src="" alt=""  style="width: 300px; height: 218px;" class="imgCard">
+            <b class="cardCat"></b>
+            <button id="btnAddCart" class="btnCard btn btn-primary"> Agregar </button>
+          </div>
+        </template>
+      </div>
       <div class="btnTD">
-        <button onclick="topFunction()" id="topBtn" title="Go to top">
+        <button onclick="topFunction()" id="topBtn">
           Inicio
         </button>
+        <p style="color: red;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, dolores.</p>
       </div>
     </main>
     <script src="js/_utilities.js"></script>
     <script src="js/_search.js"></script>
     <script src="js/_array.js"></script>
+    <script src="js/carrito.js"></script>
+    <script src="js/filtro.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <script

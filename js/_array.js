@@ -1,4 +1,3 @@
-
 //arrays con los archivos utilizados para las cards//
 const tagsArchivos = [
   "Figura",
@@ -13,7 +12,8 @@ function ImgArray(nombre, description, link) {
   this.description = description;
   this.src = link;
 }
-function Archivos(nombre, description, link, categoria) {
+function Archivos(id, nombre, description, link, categoria) {
+  this.id = id;
   this.nombre = nombre;
   this.description = description;
   this.src = link;
@@ -28,16 +28,17 @@ function archivosArray2(nombre, description, src) {
 const archivos3d = [];
 
 archivos3d.push(
-  new Archivos("Wukong", "Figura Wukong", "/img/wukong.jpg", [
+  new Archivos("1", "Wukong", "Figura Wukong", "/img/wukong.jpg", [
     "Figura",
     " Marvel",
   ])
 );
 archivos3d.push(
-  new Archivos("Mask", "Mascara Oni", "/img/mask/mask2.png", ["Mascara"])
+  new Archivos("2", "Mask", "Mascara Oni", "/img/mask/mask2.png", ["Mascara"])
 );
 archivos3d.push(
   new Archivos(
+    "3",
     "Soporte Link",
     "Soporte Joystick Link Leyend of Zelda",
     "/img/stl/soporte-control-link.png",
@@ -46,6 +47,7 @@ archivos3d.push(
 );
 archivos3d.push(
   new Archivos(
+    "4",
     "Venom Marvel",
     "Busto Venom Marvel",
     "/img/venom-body/venom-body.jpg",
@@ -53,13 +55,17 @@ archivos3d.push(
   )
 );
 archivos3d.push(
-  new Archivos("Ultron", "Ultron Figura Marvel", "/img/ultron/ultron2.jpg", [
-    "Figura",
-    " Marvel",
-  ])
+  new Archivos(
+    "5",
+    "Ultron",
+    "Ultron Figura Marvel",
+    "/img/ultron/ultron2.jpg",
+    ["Figura", " Marvel"]
+  )
 );
 archivos3d.push(
   new Archivos(
+    "6",
     "Soporte Joystick ps4",
     "Soporte Joystick The Last Of Us Part ||",
     "/img/stl/soporte-joy-tlou.jpg",
@@ -68,13 +74,13 @@ archivos3d.push(
 );
 archivos3d.push(
   new Archivos(
+    "7",
     "Bahamut Final Fantasy",
     "Figura Bahamut Final Fantasy Ender3pro",
     "/img/stl/bahamut-final-fantasy.png",
     ["Figura", " Juegos"]
   )
 );
-
 
 //ARRAY DE LOS MAS DESCARGADOS//
 // COMIENZO PRIMER ARRAY //
@@ -207,110 +213,45 @@ imgArray2.push(
   )
 );
 
-
-
 // creamos los elementos del html y treamos los elementos del array//
-for (let i in archivos3d) {
-  let contenedor = document.createElement("div");
-  contenedor.innerHTML = `<div class="card" >
-                            <p> Nombre del archivo: ${archivos3d[i].nombre}</p>
-                           <br>
-                            <img style=" width: 400px ; height:300px" src=${archivos3d[i].src} class = "img"/>
-                          <br> 
-                          <p> Categorias: ${archivos3d[i].categoria}</p>            
-                            <b>  ${archivos3d[i].description}<b/>
-                           <br>         
-                           <button id="save"  class="buttonSave"> Guardar! </button> <br>
-                           <br>
-                           <button id="quit"  class="buttonQuit" onclick="clear()"> Quitar! </button>
-                            </div> 
-                            <br>`;
-  document.getElementById("contenedor").appendChild(contenedor);
-}
 
-//----------- FILTRADO DE LOS ITEMS DEL ARRAY -------------//
+const contenedor = document.querySelector("#contenedor");
+const template = document.querySelector("#templateCard").content;
+const fragment = document.createDocumentFragment();
 
-function filtroCategoria() {
-  let contenedorSinCat = document.getElementById("noCategoria");
-  const categoryUser = document.getElementById("buscador").value;
-  let catFiltrada = archivos3d.filter((archivo) => {
-    return archivo.categoria
-      .join(" ")
-      .toLowerCase()
-      .includes(categoryUser.toLowerCase());
-  });
-  let child = contenedorSinCat.lastElementChild;
-  while (child) {
-    contenedorSinCat.removeChild(child);
-    child = contenedorSinCat.lastElementChild;
-  }
-  // ------------ CUANDO NO HAY ELEMENTOS QUE MOSTRAR ---------------//
-  if (categoryUser.trim().length && catFiltrada.length === 0) {
-    let noCategoria = document.createElement("div");
-    noCategoria.innerHTML = ` <div class="sinCategoria">
-                              <p> No hay existen elementos </p>
-                              </div>`;
-    document.getElementById("noCategoria").appendChild(noCategoria);
-    //--- OCULTA LOS ELEMENTOS DEL ARRAY QUE NO COINCIDE CON LA BUSQUEDA ----//
-    document.getElementById("contenedor").style.visibility = "hidden";
-  } else {
-    if (catFiltrada.length > 0) {
-      let contenedorImagenes = document.getElementById("contenedor");
-      // -------------ELIMINA TODOS LOS COMPONENTES HIJOS ----------------- //
-
-      let imagenChild = contenedorImagenes.lastElementChild;
-      while (imagenChild) {
-        contenedorImagenes.removeChild(imagenChild);
-        imagenChild = contenedorImagenes.lastElementChild;
-      }
-      for (let i in catFiltrada) {
-        let contenedor = document.createElement("div");
-        contenedor.innerHTML = `<div class="card" >
-                                    <p> Nombre del archivo: ${catFiltrada[i].nombre}</p>
-                                   <br>
-                                    <img style=" width: 400px ; height:300px" src=${catFiltrada[i].src} class = "img"/>
-                                  <br> 
-                                  <p> Categorias: ${catFiltrada[i].categoria}</p>            
-                                    <b>  ${catFiltrada[i].description}</b>
-                                   <br>
-                                   <button id="save"  class="buttonSave"> Guardar! </button> <br>
-                                   <button id="quit"  class="buttonQuit"> Quitar! </button>
-                                   </div> 
-                                   <br>`;
-        contenedorImagenes.appendChild(contenedor);
-      }
-      // VA MOSTRANDO LOS ELEMENTOS DE ACUERDO AL INPUT //
-      document.getElementById("contenedor").style.visibility = "visible";
-    } else {
-    }
-  }
-  console.log(catFiltrada);
-}
-
-
-// ALERTA BOTONES //
-const allbtn = document.querySelectorAll('.buttonSave');
-let elements = Array.from(allbtn);
-elements.forEach(function(e) {
-  console.log(e);
+archivos3d.forEach((item) => {
+  template.querySelector("h2").textContent = item.nombre;
+  template.querySelector("h3").textContent = item.id;
+  template.querySelector("img").src = item.src;
+  template.querySelector("p").textContent = item.description;
+  template.querySelector("b").textContent = item.categoria;
+  const clone = template.cloneNode(true);
+  fragment.appendChild(clone);
 });
-for (const button of allbtn) {
-  button.addEventListener('click', function(event) {
+contenedor.appendChild(fragment);
+
+//--------------- ALERTA BOTONES -----------------------//
+//---------- FUNCION BOTONES -----------//
+const allbtn = document.querySelectorAll(".btnCard");
+for (const buttons of allbtn) {
+  buttons.addEventListener("click", function (event) {
     Swal.fire({
-      title: 'Agregaste el archivo  ',
+      title: "Agregaste el archivo ",
       width: 600,
-      padding: '3em',
-      color: '#716add',
-      background: '',
+      padding: "3em",
+      color: "#716add",
+      background: "",
       backdrop: `
-        rgba(0,0,123,0.4)
-        url("/img/print3d.gif")
-        left top
-        no-repeat
-      `
-    })
-  })
+          rgba(0,0,123,0.4)
+          url("/img/print3d.gif")
+          center top
+          no-repeat
+        `,
+    });
+  });
 }
+
+//----------------------------------------------//
 
 document.getElementById("title1").innerHTML = imgArrayDescargados[0].nombre;
 document.getElementById("description1").innerHTML =
@@ -390,6 +331,43 @@ function previousImage2() {
     }
   }
 }
+
+
+
+const botonesCarrito = document.querySelectorAll(".btnCard");
+botonesCarrito.forEach(botonesCarrito => {
+  botonesCarrito.addEventListener("click", botonesCarritoClicked);
+});
+
+function botonesCarritoClicked(e) {
+  const btnAddCart = e.target;
+  const item = btnAddCart.closest(".card");
+  const itemNombre = item.querySelector(".card-title").textContent;
+  const itemImg = item.querySelector(".imgCard").src;
+  btnAddCart.disabled = true;
+  btnAddCart.classList.add("btn-danger");
+itemsCarrito(itemNombre,itemImg)
+}
+
+
+
+function itemsCarrito(itemNombre,itemImg){
+  let contentedorPopup = document.createElement("ul");
+  let img = document.createElement('img');
+  img.classList.add("img-items")
+  contentedorPopup.classList.add("ulListCart")
+  let elementoLista = document.createElement("li");
+  elementoLista.innerHTML = itemNombre;
+  img.src = itemImg;
+  contentedorPopup.appendChild(elementoLista);
+  contentedorPopup.appendChild(img);
+  document.getElementById("containerPopu").appendChild(contentedorPopup);
+}
+
+
+
+
+
 
 // let i = 0;
 // function buildImage() {
