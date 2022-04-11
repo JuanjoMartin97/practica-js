@@ -10,6 +10,7 @@ button.addEventListener("click", () => {
 
 close.addEventListener("click", () => {
   popup.style.display = "none";
+ 
 });
 
 popup.addEventListener("click", (e) => {
@@ -18,9 +19,6 @@ popup.addEventListener("click", (e) => {
     popup.style.display = "none";
   }
 });
-
-
-
 
 
 //------------------------------//
@@ -34,7 +32,7 @@ function download() {
     const url = window.URL.createObjectURL(new Blob([response.data]));
     const link = document.createElement("a");
     link.href = link;
-    link.setAttribute("download", "image.jpg");
+    link.setAttribute("download", "PrintEverything.rar");
     document.body.appendChild(link);
     link.click();
   });

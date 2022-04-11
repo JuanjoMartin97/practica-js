@@ -26,8 +26,7 @@ function filtroCategoria() {
     } else {
       if (catFiltrada.length > 0) {
         let contenedorImagenes = document.getElementById("contenedor");
-        // -------------ELIMINA TODOS LOS COMPONENTES HIJOS ----------------- //
-  
+        // ------------- ELIMINA TODOS LOS COMPONENTES HIJOS ----------------- //
         let imagenChild = contenedorImagenes.lastElementChild;
         while (imagenChild) {
           contenedorImagenes.removeChild(imagenChild);
@@ -45,9 +44,7 @@ function filtroCategoria() {
         contenedor.appendChild(fragment)
         // VA MOSTRANDO LOS ELEMENTOS DE ACUERDO AL INPUT //
         document.getElementById("contenedor").style.visibility = "visible";
-      } else {
-      }
+      } 
     }
   }
   
-  //--------------- ALERTA BOTONES -----------------------//

@@ -234,22 +234,24 @@ contenedor.appendChild(fragment);
 //---------- FUNCION BOTONES -----------//
 const allbtn = document.querySelectorAll(".btnCard");
 for (const buttons of allbtn) {
-  buttons.addEventListener("click", function (event) {
-    Swal.fire({
-      title: "Agregaste el archivo ",
-      width: 600,
-      padding: "3em",
-      color: "#716add",
-      background: "",
-      backdrop: `
-          rgba(0,0,123,0.4)
-          url("/img/print3d.gif")
-          center top
-          no-repeat
-        `,
+  console.log(allbtn)
+    buttons.addEventListener("click", function (event) {
+      Swal.fire({
+        title: "Agregaste el archivo ",
+        width: 600,
+        padding: "3em",
+        color: "#716add",
+        background: "",
+        backdrop: `
+            rgba(0,0,123,0.4)
+            url("/img/print3d.gif")
+            center top
+            no-repeat
+          `,
+      });
     });
-  });
-}
+  }
+
 
 //----------------------------------------------//
 
@@ -332,10 +334,8 @@ function previousImage2() {
   }
 }
 
-
-
 const botonesCarrito = document.querySelectorAll(".btnCard");
-botonesCarrito.forEach(botonesCarrito => {
+botonesCarrito.forEach((botonesCarrito) => {
   botonesCarrito.addEventListener("click", botonesCarritoClicked);
 });
 
@@ -346,16 +346,23 @@ function botonesCarritoClicked(e) {
   const itemImg = item.querySelector(".imgCard").src;
   btnAddCart.disabled = true;
   btnAddCart.classList.add("btn-danger");
-itemsCarrito(itemNombre,itemImg)
+  itemsCarrito(itemNombre, itemImg);
+  //se toma el boton
+  const element = document.getElementById("btnVaciar");
+  //se clickea el boton y se ejecuta...
+  element.addEventListener("click", () => {
+    vaciarCarrito();
+    const btnAddCart = e.target;
+    btnAddCart.disabled = false;
+    btnAddCart.classList.remove("btn-danger");
+  });
 }
 
-
-
-function itemsCarrito(itemNombre,itemImg){
+function itemsCarrito(itemNombre, itemImg) {
   let contentedorPopup = document.createElement("ul");
-  let img = document.createElement('img');
-  img.classList.add("img-items")
-  contentedorPopup.classList.add("ulListCart")
+  contentedorPopup.classList.add("ulListCart");
+  let img = document.createElement("img");
+  img.classList.add("img-items");
   let elementoLista = document.createElement("li");
   elementoLista.innerHTML = itemNombre;
   img.src = itemImg;
@@ -364,10 +371,15 @@ function itemsCarrito(itemNombre,itemImg){
   document.getElementById("containerPopu").appendChild(contentedorPopup);
 }
 
-
-
-
-
+//eliminamos los elementos pintados en el carrito
+function vaciarCarrito() {
+  let contenedorCarrito = document.getElementById("containerPopu");
+  let child = contenedorCarrito.lastElementChild;
+  while (child) {
+    contenedorCarrito.removeChild(child);
+    child = contenedorCarrito.lastElementChild;
+  }
+}
 
 // let i = 0;
 // function buildImage() {
