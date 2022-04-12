@@ -230,29 +230,6 @@ archivos3d.forEach((item) => {
 });
 contenedor.appendChild(fragment);
 
-//--------------- ALERTA BOTONES -----------------------//
-//---------- FUNCION BOTONES -----------//
-const allbtn = document.querySelectorAll(".btnCard");
-for (const buttons of allbtn) {
-  console.log(allbtn)
-    buttons.addEventListener("click", function (event) {
-      Swal.fire({
-        title: "Agregaste el archivo ",
-        width: 600,
-        padding: "3em",
-        color: "#716add",
-        background: "",
-        backdrop: `
-            rgba(0,0,123,0.4)
-            url("/img/print3d.gif")
-            center top
-            no-repeat
-          `,
-      });
-    });
-  }
-
-
 //----------------------------------------------//
 
 document.getElementById("title1").innerHTML = imgArrayDescargados[0].nombre;
@@ -334,6 +311,8 @@ function previousImage2() {
   }
 }
 
+//UTILIZO EL POPUP COMO CARRITO----------------
+
 const botonesCarrito = document.querySelectorAll(".btnCard");
 botonesCarrito.forEach((botonesCarrito) => {
   botonesCarrito.addEventListener("click", botonesCarritoClicked);
@@ -356,6 +335,7 @@ function botonesCarritoClicked(e) {
     btnAddCart.disabled = false;
     btnAddCart.classList.remove("btn-danger");
   });
+  btnDisabled.disabled = false;
 }
 
 function itemsCarrito(itemNombre, itemImg) {
@@ -372,12 +352,51 @@ function itemsCarrito(itemNombre, itemImg) {
 }
 
 //eliminamos los elementos pintados en el carrito
+const btnDisabled = document.getElementById("btnCarrito");
 function vaciarCarrito() {
   let contenedorCarrito = document.getElementById("containerPopu");
   let child = contenedorCarrito.lastElementChild;
+  let mostrarItems = document.getElementById("cantItem");
   while (child) {
     contenedorCarrito.removeChild(child);
     child = contenedorCarrito.lastElementChild;
+  }
+  mostrarItems.value = "Sin Items";
+  items = 0;
+  btnDisabled.disabled = true;
+}
+
+//--------------- ALERTA BOTONES -----------------------//
+//---------- FUNCION BOTONES -----------//
+
+const allbtn = document.querySelectorAll(".btnCard");
+for (const buttons of allbtn) {
+  console.log(allbtn);
+  buttons.addEventListener("click", function (event) {
+    Swal.fire({
+      title: "Agregaste el archivo ",
+      width: 600,
+      padding: "3em",
+      color: "#716add",
+      background: "",
+      backdrop: `
+      rgba(0,0,123,0.4)
+      url("/img/print3d.gif")
+      center top
+      no-repeat
+      `,
+    });
+  });
+}
+
+let mostrarItems = document.getElementById("cantItem");
+let items = 0;
+function contItems() {
+  items += 1;
+  //---------------- alertas ---------------------\\
+  if (items > 0) {
+    //---------- SE LE ASIGNA AL INPUT LA VARIABLE ACUM-------
+    mostrarItems.value = "Cantidad de archivos " + items;
   }
 }
 

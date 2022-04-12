@@ -78,14 +78,16 @@
           <button id="btnCarrito" style="background-color: black">
             <div class="cart">
               <span
-                ><img src="/img/cart.png" alt="" />
-                <p style="color: white" id="display"></p>
+                ><img src="/img/cart.png" style="width: 30px;" alt="" />
+                <br>
+                <br>
                 <input
                   type="text"
                   name="value"
-                  id="value"
+                  id="cantItem"
                   disabled
-                  style="text-align: center; width: 2rem; color: white"
+                  placeholder="Sin Items"
+                  style="text-align: center; color: white"
                 />
               </span>
             </div>
@@ -233,7 +235,11 @@
               class="imgCard"
             />
             <b class="cardCat"></b>
-            <button id="btnAddCart" class="btnCard btn btn-primary">
+            <button
+              id="btnAddCart"
+              class="btnCard btn btn-primary"
+              onclick="contItems()"
+            >
               Agregar
             </button>
           </div>
