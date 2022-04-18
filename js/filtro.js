@@ -33,15 +33,46 @@ function filtroCategoria() {
           imagenChild = contenedorImagenes.lastElementChild;
         }
         catFiltrada.forEach(item => {
-          template.querySelector('h2').textContent = item.nombre
-          template.querySelector('img').src = item.src
-          template.querySelector('p').textContent = item.description
-          template.querySelector('b').textContent = item.categoria
-          const clone = template.cloneNode(true)
-          fragment.appendChild(clone)
-        });
+          let archivoEncontrado = arrayCarrito.find(
+            (element) => element.id === item.id
+          );
+          console.log(item.id);
+          console.log(archivoEncontrado);
+          let divContainer = document.createElement("div");
+          divContainer.classList.add("col-3", "card", "m-2");
+          let fileName = document.createElement("h2");
+          let fileDescription = document.createElement("h3");
+          let fileCategoria = document.createElement("p");
+          let fileImg = document.createElement("img");
+          let fileButton = document.createElement("button");
+          fileName.innerHTML = item.nombre;
+          fileName.classList.add("card-title");
+          fileDescription.innerHTML = item.description;
+          fileDescription.classList.add("cardDescription");
+          fileCategoria.innerHTML = item.categoria;
+          fileImg.src = item.src;
+          fileImg.classList.add("card-img-top");
+          fileButton.innerHTML = archivoEncontrado ? "AGREGADO": " AGREGAR ";
+          fileButton.setAttribute("id", item.id);
+          fileButton.addEventListener("click", () => {
+            botonAgregarAlCarrito(item);
+          });
+          fileButton.disabled = archivoEncontrado;
+          if (archivoEncontrado) {
+            fileButton.classList.add("btn", "btn-danger");
+          }else{
+            fileButton.classList.add("btn", "btn-primary");
+          }
         
-        contenedor.appendChild(fragment)
+          divContainer.appendChild(fileName);
+          divContainer.appendChild(fileDescription);
+          divContainer.appendChild(fileCategoria);
+          divContainer.appendChild(fileImg);
+          divContainer.appendChild(fileButton);
+          div.appendChild(divContainer);
+        });
+        arrRead.appendChild(div);
+        contenedor.appendChild(divContainer)
         // VA MOSTRANDO LOS ELEMENTOS DE ACUERDO AL INPUT //
         document.getElementById("contenedor").style.visibility = "visible";
       } 

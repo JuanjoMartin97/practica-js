@@ -26,6 +26,7 @@ function archivosArray2(nombre, description, src) {
 }
 
 const archivos3d = [];
+let arrayCarrito = [];
 
 archivos3d.push(
   new Archivos("1", "Wukong", "Figura Wukong", "/img/wukong.jpg", [
@@ -143,8 +144,6 @@ imgArrayDescargados.push(
   )
 );
 
-console.log(imgArrayDescargados);
-
 // COMIENZO SEGUNDO ARRAY //
 
 let imgArray2 = [];
@@ -213,22 +212,59 @@ imgArray2.push(
   )
 );
 
-// creamos los elementos del html y treamos los elementos del array//
+let arrRead = document.getElementById("arrayRead");
 
-const contenedor = document.querySelector("#contenedor");
-const template = document.querySelector("#templateCard").content;
-const fragment = document.createDocumentFragment();
-
-archivos3d.forEach((item) => {
-  template.querySelector("h2").textContent = item.nombre;
-  template.querySelector("h3").textContent = item.id;
-  template.querySelector("img").src = item.src;
-  template.querySelector("p").textContent = item.description;
-  template.querySelector("b").textContent = item.categoria;
-  const clone = template.cloneNode(true);
-  fragment.appendChild(clone);
-});
-contenedor.appendChild(fragment);
+function readArr() {
+  let arrRead = document.getElementById("arrayRead");
+  let child = arrRead.lastElementChild;
+  while (child) {
+    arrRead.removeChild(child);
+    child = arrRead.lastElementChild;
+  }
+  let div = document.createElement("div");
+  div.classList.add("row");
+  archivos3d.forEach((item) => {
+    let archivoEncontrado = arrayCarrito.find(
+      (element) => element.id === item.id
+    );
+    console.log(item.id);
+    console.log(archivoEncontrado);
+    let divContainer = document.createElement("div");
+    divContainer.classList.add("col-3", "card", "m-2");
+    let fileName = document.createElement("h2");
+    let fileDescription = document.createElement("h3");
+    let fileCategoria = document.createElement("p");
+    let fileImg = document.createElement("img");
+    let fileButton = document.createElement("button");
+    fileName.innerHTML = item.nombre;
+    fileName.classList.add("card-title");
+    fileDescription.innerHTML = item.description;
+    fileDescription.classList.add("cardDescription");
+    fileCategoria.innerHTML = item.categoria;
+    fileImg.src = item.src;
+    fileImg.classList.add("card-img-top");
+    fileButton.innerHTML = archivoEncontrado ? "AGREGADO": " AGREGAR ";
+    fileButton.setAttribute("id", item.id);
+    fileButton.addEventListener("click", () => {
+      botonAgregarAlCarrito(item);
+    });
+    fileButton.disabled = archivoEncontrado;
+    if (archivoEncontrado) {
+      fileButton.classList.add("btn", "btn-danger");
+    }else{
+      fileButton.classList.add("btn", "btn-primary");
+    }
+  
+    divContainer.appendChild(fileName);
+    divContainer.appendChild(fileDescription);
+    divContainer.appendChild(fileCategoria);
+    divContainer.appendChild(fileImg);
+    divContainer.appendChild(fileButton);
+    div.appendChild(divContainer);
+  });
+  arrRead.appendChild(div);
+}
+readArr();
 
 //----------------------------------------------//
 
@@ -311,106 +347,70 @@ function previousImage2() {
   }
 }
 
-//UTILIZO EL POPUP COMO CARRITO----------------
-
-const botonesCarrito = document.querySelectorAll(".btnCard");
-botonesCarrito.forEach((botonesCarrito) => {
-  botonesCarrito.addEventListener("click", botonesCarritoClicked);
-});
-
-function botonesCarritoClicked(e) {
-  const btnAddCart = e.target;
-  const item = btnAddCart.closest(".card");
-  const itemNombre = item.querySelector(".card-title").textContent;
-  const itemImg = item.querySelector(".imgCard").src;
-  btnAddCart.disabled = true;
-  btnAddCart.classList.add("btn-danger");
-  itemsCarrito(itemNombre, itemImg);
-  //se toma el boton
-  const element = document.getElementById("btnVaciar");
-  //se clickea el boton y se ejecuta...
-  element.addEventListener("click", () => {
-    vaciarCarrito();
-    const btnAddCart = e.target;
-    btnAddCart.disabled = false;
-    btnAddCart.classList.remove("btn-danger");
-  });
-  btnDisabled.disabled = false;
-}
-
-function itemsCarrito(itemNombre, itemImg) {
-  let contentedorPopup = document.createElement("ul");
-  contentedorPopup.classList.add("ulListCart");
-  let img = document.createElement("img");
-  img.classList.add("img-items");
-  let elementoLista = document.createElement("li");
-  elementoLista.innerHTML = itemNombre;
-  img.src = itemImg;
-  contentedorPopup.appendChild(elementoLista);
-  contentedorPopup.appendChild(img);
-  document.getElementById("containerPopu").appendChild(contentedorPopup);
-}
-
-//eliminamos los elementos pintados en el carrito
-const btnDisabled = document.getElementById("btnCarrito");
-function vaciarCarrito() {
-  let contenedorCarrito = document.getElementById("containerPopu");
-  let child = contenedorCarrito.lastElementChild;
-  let mostrarItems = document.getElementById("cantItem");
-  while (child) {
-    contenedorCarrito.removeChild(child);
-    child = contenedorCarrito.lastElementChild;
-  }
-  mostrarItems.value = "Sin Items";
-  items = 0;
-  btnDisabled.disabled = true;
-}
-
-//--------------- ALERTA BOTONES -----------------------//
-//---------- FUNCION BOTONES -----------//
-
-const allbtn = document.querySelectorAll(".btnCard");
-for (const buttons of allbtn) {
-  console.log(allbtn);
-  buttons.addEventListener("click", function (event) {
-    Swal.fire({
-      title: "Agregaste el archivo ",
-      width: 600,
-      padding: "3em",
-      color: "#716add",
-      background: "",
-      backdrop: `
+function botonAgregarAlCarrito(item) {
+  arrayCarrito.push(item);
+  pintarCarrito();
+  Swal.fire({
+    title: "Agregaste el archivo --- " + item.nombre,
+    width: 600,
+    padding: "3em",
+    color: "#716add",
+    background: "",
+    backdrop: `
       rgba(0,0,123,0.4)
       url("/img/print3d.gif")
       center top
       no-repeat
       `,
-    });
   });
 }
 
-let mostrarItems = document.getElementById("cantItem");
-let items = 0;
-function contItems() {
-  items += 1;
-  //---------------- alertas ---------------------\\
-  if (items > 0) {
-    //---------- SE LE ASIGNA AL INPUT LA VARIABLE ACUM-------
-    mostrarItems.value = "Cantidad de archivos " + items;
+function pintarCarrito() {
+  readArr();
+  let contenedorCarrito = document.getElementById("containerPopu");
+  let child = contenedorCarrito.lastElementChild;
+  while (child) {
+    contenedorCarrito.removeChild(child);
+    child = contenedorCarrito.lastElementChild;
   }
+  for (let index = 0; index < arrayCarrito.length; index++) {
+    const element = arrayCarrito[index];
+    let contentedorPopup = document.createElement("ul");
+    contentedorPopup.classList.add("ulListCart");
+    let img = document.createElement("img");
+    img.classList.add("img-items");
+    let elementoLista = document.createElement("li");
+    let btnClear = document.createElement("button");
+    btnClear.setAttribute("id", "btnEliminar");
+    btnClear.classList.add("btn", "btn-danger", "buttonDelete");
+    btnClear.innerHTML = "Eliminar Archivo";
+    btnClear.addEventListener("click", () => {
+      eliminarItemCarrito(element.id);
+    });
+    elementoLista.innerHTML = element.nombre;
+    img.src = element.src;
+
+    contentedorPopup.appendChild(elementoLista);
+    contentedorPopup.appendChild(img);
+    contentedorPopup.appendChild(btnClear);
+    document.getElementById("containerPopu").appendChild(contentedorPopup);
+  }
+
+  //se muestran los archivos del carrrito
+  let mostrarItems = document.getElementById("cantItem");
+  let items = arrayCarrito.length;
+  mostrarItems.value = "Cantidad de Archivos " + items;
 }
 
-// let i = 0;
-// function buildImage() {
-//   let img = document.createElement("img");
-//   img.src = imgArray[i];
-//   document.getElementById("box").appendChild(img);
-// }
 
-// function changeImage() {
-//   let img = document.getElementById("box").getElementsByTagName("img")[0];
-//   i++;
-//   i = i % imgArray.length; // EN ESTA LINEA DA LA VUELTA, LA ULTIMA PASA A PRIMERA
-//   img.src = imgArray[i];
+//eliminamos un item del carrito
 
-// }
+function eliminarItemCarrito(id) {
+  const arrayItems = arrayCarrito.filter((item) => item.id !== id);
+  arrayCarrito = arrayItems;
+
+  pintarCarrito();
+  
+}
+
+

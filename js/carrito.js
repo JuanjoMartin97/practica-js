@@ -38,14 +38,13 @@ function download() {
   });
 }
 
-//----------PRACTICA FETCH USUARIOS RANDOM CONSOLA ----------//
+// //----------PRACTICA FETCH USUARIOS RANDOM CONSOLA ----------//
 
-const url ='https://randomuser.me/api/'
+// const url ='https://randomuser.me/api/'
 
-fetch(url)
-.then(response => response.json())
-.then(data =>{
-console.log(data)
-})
-.catch(err=>console.log(err))
+// fetch(url)
+// .then(response => response.json())
+// .then(data =>{
+// })
+// .catch(err=>console.log(err))
 
