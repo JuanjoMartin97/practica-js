@@ -127,7 +127,7 @@ imgArrayDescargados.push(
   new ImgArray(
     "Rengoku Demon Slayer",
     "Figura Rengoku Demon Slayer",
-    "img/stl/rengoku-demon.jpg"
+    "img/stl/rengoku.jpg"
   )
 );
 imgArrayDescargados.push(
@@ -362,7 +362,7 @@ function botonAgregarAlCarrito(item) {
     background: "",
     backdrop: `
       rgba(0,0,123,0.4)
-      url("/img/print3d.gif")
+      url("img/print3d.gif")
       center top
       no-repeat
       `,
