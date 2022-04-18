@@ -1,4 +1,5 @@
 //arrays con los archivos utilizados para las cards//
+
 const tagsArchivos = [
   "Figura",
   "Juegos",
@@ -27,7 +28,7 @@ function archivosArray2(nombre, description, src) {
 
 const archivos3d = [];
 let arrayCarrito = [];
-
+load();
 archivos3d.push(
   new Archivos("1", "Wukong", "Figura Wukong", "/img/wukong.jpg", [
     "Figura",
@@ -224,11 +225,12 @@ function readArr() {
   }
   let div = document.createElement("div");
   div.classList.add("row");
+  //se pintan los elementos del array en el HTML
   archivos3d.forEach((item) => {
     let archivoEncontrado = arrayCarrito.find(
       (element) => element.id === item.id
     );
-
+//se crean los elementos de las cards
     let divContainer = document.createElement("div");
     divContainer.classList.add("col-3", "card", "m-2");
     let fileName = document.createElement("h2");
@@ -242,10 +244,10 @@ function readArr() {
     fileDescription.classList.add("cardDescription");
     fileCategoria.innerHTML = item.categoria;
     fileImg.src = item.src;
-    fileImg.style.width = "100%"
-    fileImg.style.height = "auto"
+    fileImg.style.width = "100%";
+    fileImg.style.height = "auto";
     fileImg.classList.add("card-img-top");
-    fileButton.innerHTML = archivoEncontrado ? "AGREGADO": " AGREGAR ";
+    fileButton.innerHTML = archivoEncontrado ? "AGREGADO" : " AGREGAR ";
     fileButton.setAttribute("id", item.id);
     fileButton.addEventListener("click", () => {
       botonAgregarAlCarrito(item);
@@ -253,10 +255,9 @@ function readArr() {
     fileButton.disabled = archivoEncontrado;
     if (archivoEncontrado) {
       fileButton.classList.add("btn", "btn-danger");
-    }else{
+    } else {
       fileButton.classList.add("btn", "btn-primary");
     }
-  
     divContainer.appendChild(fileName);
     divContainer.appendChild(fileCategoria);
     divContainer.appendChild(fileImg);
@@ -349,6 +350,7 @@ function previousImage2() {
   }
 }
 
+//agrega un item al carrito y se ejecuta una alerta 
 function botonAgregarAlCarrito(item) {
   arrayCarrito.push(item);
   pintarCarrito();
@@ -404,26 +406,37 @@ function pintarCarrito() {
   //se muestran los archivos del carrrito
   let mostrarItems = document.getElementById("cantItem");
   let items = arrayCarrito.length;
+  let btnDescarga = document.getElementById("btnDownload");
   mostrarItems.value = "Cantidad de Archivos " + items;
-  if (arrayCarrito.length<1) {
-    mostrarItems.value = "Sin Items"
+  if (arrayCarrito.length < 1) {
+    mostrarItems.value = "Sin Items";
+    btnDescarga.disabled = true;
+  } else {
+    btnDescarga.disabled = false;
   }
+  //llamo guardar en el localstorage
+  save();
 }
 
-
 //eliminamos un item del carrito
-
 function eliminarItemCarrito(id) {
   const arrayItems = arrayCarrito.filter((item) => item.id !== id);
   arrayCarrito = arrayItems;
-
   pintarCarrito();
-  
 }
-
-
-
-
-
-
-
+//funcion para cargar items del localstorage
+function load() {
+  let itemsArray = JSON.parse(localStorage.getItem("itemsCarrito"));
+  if (itemsArray) {
+    arrayCarrito = itemsArray;
+    pintarCarrito();
+  }
+}
+//funcion para guardar items en el localstorage
+function save() {
+  if (arrayCarrito.length > 0) {
+    localStorage.setItem("itemsCarrito", JSON.stringify(arrayCarrito));
+  } else {
+    localStorage.removeItem("itemsCarrito");
+  }
+}
