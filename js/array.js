@@ -30,20 +30,20 @@ const archivos3d = [];
 let arrayCarrito = [];
 load();
 archivos3d.push(
-  new Archivos("1", "Wukong", "Figura Wukong", "/img/wukong.jpg", [
+  new Archivos("1", "Wukong", "Figura Wukong", "img/stl/wukong.jpg", [
     "Figura",
     " Marvel",
   ])
 );
 archivos3d.push(
-  new Archivos("2", "Mask", "Mascara Oni", "/img/mask/mask2.png", ["Mascara"])
+  new Archivos("2", "Mask", "Mascara Oni", "img/stl/mask2.png", ["Mascara"])
 );
 archivos3d.push(
   new Archivos(
     "3",
     "Soporte Link",
     "Soporte Joystick Link Leyend of Zelda",
-    "/img/stl/soporte-control-link.png",
+    "img/stl/soporte-control-link.png",
     ["Soporte", " Joystick"]
   )
 );
@@ -52,7 +52,7 @@ archivos3d.push(
     "4",
     "Venom Marvel",
     "Busto Venom Marvel",
-    "/img/venom-body/venom-body.jpg",
+    "img/stl/venom-body.jpg",
     ["Figura", " Marvel"]
   )
 );
@@ -61,7 +61,7 @@ archivos3d.push(
     "5",
     "Ultron",
     "Ultron Figura Marvel",
-    "/img/ultron/ultron2.jpg",
+    "img/stl/ultron2.jpg",
     ["Figura", " Marvel"]
   )
 );
@@ -70,7 +70,7 @@ archivos3d.push(
     "6",
     "Soporte Joystick",
     "Soporte Joystick The Last Of Us Part ||",
-    "/img/stl/soporte-joy-tlou.jpg",
+    "img/stl/soporte-joy-tlou.jpg",
     ["Soporte", " Joystick"]
   )
 );
@@ -79,7 +79,7 @@ archivos3d.push(
     "7",
     "Bahamut Final Fantasy",
     "Figura Bahamut Final Fantasy Ender3pro",
-    "/img/stl/bahamut-final-fantasy.png",
+    "img/stl/bahamut-final-fantasy.png",
     ["Figura", " Juegos"]
   )
 );
@@ -96,52 +96,52 @@ imgArrayDescargados.push(
   new ImgArray(
     "Luffy Gear 4",
     "Figura Luffy One Piece",
-    "/img/stl/LuffyGear4.jpg"
+    "img/stl/LuffyGear4.jpg"
   )
 );
 imgArrayDescargados.push(
   new ImgArray(
     "Goku vs Broly",
     "Figura de la pelea Goku Broly pelicula",
-    "/img/stl/broly-vs-goku-3d-model-stl.jpg"
+    "img/stl/broly-vs-goku-3d-model-stl.jpg"
   )
 );
 imgArrayDescargados.push(
   new ImgArray(
     "Ronoroa Zoro",
     "Figura Zoro One Piece",
-    "/img/stl/zoro-busto.jpg"
+    "img/stl/zoro-busto.jpg"
   )
 );
 imgArrayDescargados.push(
-  new ImgArray("Naruto Fuko", "Funko Naruto ender3", "/img/stl/narutofunko.png")
+  new ImgArray("Naruto Fuko", "Funko Naruto ender3", "img/stl/narutofunko.png")
 );
 imgArrayDescargados.push(
   new ImgArray(
     "Nezuko Figura",
     "Figura Nezuko Demon Slayer",
-    "/img/stl/nezukoStl.jpg"
+    "img/stl/nezukoStl.jpg"
   )
 );
 imgArrayDescargados.push(
   new ImgArray(
     "Rengoku Demon Slayer",
     "Figura Rengoku Demon Slayer",
-    "/img/stl/rengoku-demon.jpg"
+    "img/stl/rengoku-demon.jpg"
   )
 );
 imgArrayDescargados.push(
   new ImgArray(
     "Goku SSJ DBZ",
     "Figura Goku DBZ - Kakarot SSJ",
-    "/img/stl/GokuSS.jpeg"
+    "img/stl/GokuSS.jpeg"
   )
 );
 imgArrayDescargados.push(
   new ImgArray(
     "Vegeta Funko",
     "Vegeta DBZ Funko Replica ender3",
-    "/img/stl/vegeta.jpg"
+    "img/stl/vegeta.jpg"
   )
 );
 
@@ -209,7 +209,7 @@ imgArray2.push(
   new archivosArray2(
     "Zeddmore GhostBusters",
     "Personajes Zeddemore GhostBusters Figura",
-    "/img/stl/ghostbusters-zeddemore.jpg"
+    "img/stl/ghostbusters-zeddemore.jpg"
   )
 );
 
