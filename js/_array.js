@@ -67,7 +67,7 @@ archivos3d.push(
 archivos3d.push(
   new Archivos(
     "6",
-    "Soporte Joystick ps4",
+    "Soporte Joystick",
     "Soporte Joystick The Last Of Us Part ||",
     "/img/stl/soporte-joy-tlou.jpg",
     ["Soporte", " Joystick"]
@@ -212,6 +212,7 @@ imgArray2.push(
   )
 );
 
+//se crean los elementos del array
 let arrRead = document.getElementById("arrayRead");
 
 function readArr() {
@@ -227,12 +228,11 @@ function readArr() {
     let archivoEncontrado = arrayCarrito.find(
       (element) => element.id === item.id
     );
-    console.log(item.id);
-    console.log(archivoEncontrado);
+
     let divContainer = document.createElement("div");
     divContainer.classList.add("col-3", "card", "m-2");
     let fileName = document.createElement("h2");
-    let fileDescription = document.createElement("h3");
+    let fileDescription = document.createElement("p");
     let fileCategoria = document.createElement("p");
     let fileImg = document.createElement("img");
     let fileButton = document.createElement("button");
@@ -242,6 +242,8 @@ function readArr() {
     fileDescription.classList.add("cardDescription");
     fileCategoria.innerHTML = item.categoria;
     fileImg.src = item.src;
+    fileImg.style.width = "100%"
+    fileImg.style.height = "auto"
     fileImg.classList.add("card-img-top");
     fileButton.innerHTML = archivoEncontrado ? "AGREGADO": " AGREGAR ";
     fileButton.setAttribute("id", item.id);
@@ -256,9 +258,9 @@ function readArr() {
     }
   
     divContainer.appendChild(fileName);
-    divContainer.appendChild(fileDescription);
     divContainer.appendChild(fileCategoria);
     divContainer.appendChild(fileImg);
+    divContainer.appendChild(fileDescription);
     divContainer.appendChild(fileButton);
     div.appendChild(divContainer);
   });
@@ -365,14 +367,17 @@ function botonAgregarAlCarrito(item) {
   });
 }
 
+//se pintan los elementos del nuevo array en el popup - del carrito
 function pintarCarrito() {
   readArr();
+  //no se pinta los demas elementos
   let contenedorCarrito = document.getElementById("containerPopu");
   let child = contenedorCarrito.lastElementChild;
   while (child) {
     contenedorCarrito.removeChild(child);
     child = contenedorCarrito.lastElementChild;
   }
+  //recorre el array arrayCarrito y se pinta
   for (let index = 0; index < arrayCarrito.length; index++) {
     const element = arrayCarrito[index];
     let contentedorPopup = document.createElement("ul");
@@ -400,6 +405,9 @@ function pintarCarrito() {
   let mostrarItems = document.getElementById("cantItem");
   let items = arrayCarrito.length;
   mostrarItems.value = "Cantidad de Archivos " + items;
+  if (arrayCarrito.length<1) {
+    mostrarItems.value = "Sin Items"
+  }
 }
 
 
@@ -412,5 +420,10 @@ function eliminarItemCarrito(id) {
   pintarCarrito();
   
 }
+
+
+
+
+
 
 
