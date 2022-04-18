@@ -30,7 +30,7 @@ const archivos3d = [];
 let arrayCarrito = [];
 load();
 archivos3d.push(
-  new Archivos("1", "Wukong", "Figura Wukong", "img/stl/wukong.jpg", [
+  new Archivos("1", "Wukong", "Figura Wukong", "img/stl/mono.jpg", [
     "Figura",
     " Marvel",
   ])
@@ -90,7 +90,7 @@ archivos3d.push(
 const imgArrayDescargados = [];
 
 imgArrayDescargados.push(
-  new ImgArray("Trunks", "Trunks del Futuro", "img/stl/trunks.jpeg")
+  new ImgArray("Trunks", "Trunks del Futuro", "img/stl/dbztrunks.jpeg")
 );
 imgArrayDescargados.push(
   new ImgArray(
