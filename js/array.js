@@ -90,7 +90,7 @@ archivos3d.push(
 const imgArrayDescargados = [];
 
 imgArrayDescargados.push(
-  new ImgArray("Trunks", "Trunks del Futuro", "/img/dbz-trunks/Trunks.jpeg")
+  new ImgArray("Trunks", "Trunks del Futuro", "img/stl/trunks.jpeg")
 );
 imgArrayDescargados.push(
   new ImgArray(
