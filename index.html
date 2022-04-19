@@ -13,8 +13,7 @@
     />
     <title>Universo 3D</title>
   </head>
-
-  <body style="background-color: black">
+  <body>
     <header>
       <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
@@ -22,7 +21,7 @@
             ><img
               src="img/3dprint.svg"
               alt=""
-              style="width: 100px; background-color: rgb(173, 12, 12)"
+              style="width: 100px; background-color: rgb(255, 250, 250)"
           /></a>
           <button
             class="navbar-toggler"
@@ -45,6 +44,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">SUBIR+</a>
               </li>
+              
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
@@ -72,15 +72,29 @@
                   </li>
                 </ul>
               </li>
+              <li>
+                <div class="switch_box box_3">
+                  <div class="toggle_switch">
+                    <input type="checkbox" class="switch_3" onclick="switchMode()">
+                    <svg class="checkbox" xmlns="http://www.w3.org/2000/svg" style="isolation:isolate" viewBox="0 0 168 80">
+                       <path class="outer-ring" d="M41.534 9h88.932c17.51 0 31.724 13.658 31.724 30.482 0 16.823-14.215 30.48-31.724 30.48H41.534c-17.51 0-31.724-13.657-31.724-30.48C9.81 22.658 24.025 9 41.534 9z" fill="none" stroke="#233043" stroke-width="3" stroke-linecap="square" stroke-miterlimit="3"/>
+                       <path class="is_checked" d="M17 39.482c0-12.694 10.306-23 23-23s23 10.306 23 23-10.306 23-23 23-23-10.306-23-23z"/>
+                      <path class="is_unchecked" d="M132.77 22.348c7.705 10.695 5.286 25.617-5.417 33.327-2.567 1.85-5.38 3.116-8.288 3.812 7.977 5.03 18.54 5.024 26.668-.83 10.695-7.706 13.122-22.634 5.418-33.33-5.855-8.127-15.88-11.474-25.04-9.23 2.538 1.582 4.806 3.676 6.66 6.25z"/>
+                    </svg>
+                    </div>
+                  </div>
+              </li>
             </ul>
+            
           </div>
+
           <!-- ICONO DEL CARRITO-->
           <button id="btnCarrito" style="background-color: black">
             <div class="cart">
               <span
-                ><img src="img/cart.png" style="width: 30px;" alt="" />
-                <br>
-                <br>
+                ><img src="img/cart.png" style="width: 30px" alt="" />
+                <br />
+                <br />
                 <input
                   type="text"
                   name="value"
@@ -110,7 +124,12 @@
             </div>
             <div class="modal-body" id="containerPopu"></div>
             <div class="modal-footer">
-              <button onclick="download()" class="btn btn-primary" id="btnDownload" disabled>
+              <button
+                onclick="download()"
+                class="btn btn-primary"
+                id="btnDownload"
+                disabled
+              >
                 Descargar
               </button>
             </div>
@@ -178,8 +197,8 @@
       <div class="arrays">
         <!--PRIMER ARRAY - IZQUIERDA -->
         <div id="splash">
-          <h3 id="title1" style="color: white"></h3>
-          <p id="description1" style="color: white"></p>
+          <h3 id="title1" style="color: red"></h3>
+          <p id="description1" style="color: red"></p>
           <img id="mainImage" />
         </div>
         <!-- BOTONES -->
@@ -201,13 +220,20 @@
         </div>
         <!--SEGUNDO ARRAY - DERECHA-->
         <div id="splash1">
-          <h3 id="title" style="color: white"></h3>
-          <p id="description" style="color: white"></p>
+          <h3 id="title" style="color: red"></h3>
+          <p id="description" style="color: red"></p>
           <img id="mainImage2" />
         </div>
       </div>
-      <div>
+      <div style="display: flex; justify-content: center; margin-top: 4rem">
+        <img
+          src="img/magnify.png"
+          alt=""
+          style="background-color: rgb(255, 255, 255); width: 2rem"
+        />
         <input
+          class="form-control"
+          style="width: 30rem"
           id="buscador"
           type="text"
           oninput="filtroCategoria()"
@@ -216,16 +242,19 @@
       </div>
       <div class="sinCategoria" id="noCategoria"></div>
       <div class="container py-5" id="contenedor">
-
-          <div id="arrayRead" class="row contenedor"></div>
+        <div id="arrayRead" class="row contenedor"></div>
       </div>
       <div class="btnTD">
         <button onclick="topFunction()" id="topBtn">Inicio</button>
-        <p style="color: red">
-          juanjomartin010@gmail.com
-        </p>
+        <p style="color: red">juanjomartin010@gmail.com</p>
       </div>
     </main>
+    <script>
+      function switchMode() {
+        let element = document.body;
+        element.classList.toggle("dark-mode");
+      }
+    </script>
     <script src="./js/utilities.js"></script>
     <script src="./js/search.js"></script>
     <script src="./js/array.js"></script>

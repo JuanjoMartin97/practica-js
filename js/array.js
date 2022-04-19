@@ -234,19 +234,24 @@ function readArr() {
     //se crean los elementos de las cards
     let divContainer = document.createElement("div");
     divContainer.classList.add("col-3", "card", "m-2");
+    divContainer.style.width = "30%";
+    divContainer.style.alignItems = "center";
     let fileName = document.createElement("h2");
     let fileDescription = document.createElement("p");
     let fileCategoria = document.createElement("p");
     let fileImg = document.createElement("img");
     let fileButton = document.createElement("button");
+    fileButton.style.width = "50%";
     fileName.innerHTML = item.nombre;
     fileName.classList.add("card-title");
     fileDescription.innerHTML = item.description;
     fileDescription.classList.add("cardDescription");
+    fileDescription.style.color = "blackgi";
     fileCategoria.innerHTML = item.categoria;
+    fileCategoria.style.color = "black";
     fileImg.src = item.src;
-    fileImg.style.width = "100%";
-    fileImg.style.height = "auto";
+    fileImg.style.width = "350px";
+    fileImg.style.height = "300px";
     fileImg.classList.add("card-img-top");
     fileButton.innerHTML = archivoEncontrado ? "AGREGADO" : " AGREGAR ";
     fileButton.setAttribute("id", item.id);

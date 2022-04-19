@@ -28,7 +28,6 @@ function topFunction() {
 
 
 
-
 // ---------------- CONTADOR DE CHECKBOX ------------------\\
 
 // function checkboxes() {
