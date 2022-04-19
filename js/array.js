@@ -1,6 +1,7 @@
 //arrays con los archivos utilizados para las cards//
 
 const tagsArchivos = [
+  "Anime",
   "Figura",
   "Juegos",
   "Soporte",
@@ -30,10 +31,13 @@ const archivos3d = [];
 let arrayCarrito = [];
 load();
 archivos3d.push(
-  new Archivos("1", "Wukong", "Figura Wukong", "img/stl/mono.jpg", [
-    "Figura",
-    " Marvel",
-  ])
+  new Archivos(
+    "1",
+    "Jiraiya",
+    "Figura Jiraiya Naruto-Sensei",
+    "img/stl/jiraiya.jpg",
+    ["Figura", " Anime"]
+  )
 );
 archivos3d.push(
   new Archivos("2", "Mask", "Mascara Oni", "img/stl/mask2.png", ["Mascara"])
@@ -57,13 +61,10 @@ archivos3d.push(
   )
 );
 archivos3d.push(
-  new Archivos(
-    "5",
-    "Ultron",
-    "Ultron Figura Marvel",
-    "img/stl/ultron2.jpg",
-    ["Figura", " Marvel"]
-  )
+  new Archivos("5", "Ultron", "Ultron Figura Marvel", "img/stl/ultron2.jpg", [
+    "Figura",
+    " Marvel",
+  ])
 );
 archivos3d.push(
   new Archivos(
@@ -90,7 +91,7 @@ archivos3d.push(
 const imgArrayDescargados = [];
 
 imgArrayDescargados.push(
-  new ImgArray("Trunks", "Trunks del Futuro", "img/stl/dbztrunks.jpeg")
+  new ImgArray("Demonio Samurai", "Samurai Akuma", "img/stl/samurai.jpg")
 );
 imgArrayDescargados.push(
   new ImgArray(
@@ -230,7 +231,7 @@ function readArr() {
     let archivoEncontrado = arrayCarrito.find(
       (element) => element.id === item.id
     );
-//se crean los elementos de las cards
+    //se crean los elementos de las cards
     let divContainer = document.createElement("div");
     divContainer.classList.add("col-3", "card", "m-2");
     let fileName = document.createElement("h2");
@@ -350,7 +351,7 @@ function previousImage2() {
   }
 }
 
-//agrega un item al carrito y se ejecuta una alerta 
+//agrega un item al carrito y se ejecuta una alerta
 function botonAgregarAlCarrito(item) {
   arrayCarrito.push(item);
   pintarCarrito();
